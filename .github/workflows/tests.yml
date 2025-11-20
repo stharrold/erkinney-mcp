@@ -7,8 +7,9 @@ on:
     branches: [main, develop, contrib/stharrold]
 
 jobs:
-  test:
+  test-python:
     runs-on: ubuntu-latest
+    if: hashFiles('pyproject.toml') != ''
 
     steps:
       - name: Checkout code
@@ -44,3 +45,41 @@ jobs:
           if [ -f mcp_manager.py ]; then uv run mypy mcp_manager.py || true; fi
           if [ -f test_mcp_deduplication.py ]; then uv run mypy test_mcp_deduplication.py || true; fi
         continue-on-error: true
+
+  test-nodejs:
+    runs-on: ubuntu-latest
+    if: hashFiles('**/package.json') != ''
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Find Node.js projects
+        id: find-projects
+        run: |
+          PROJECTS=$(find . -name 'package.json' -not -path '*/node_modules/*' -exec dirname {} \; | sort -u)
+          echo "projects<<EOF" >> $GITHUB_OUTPUT
+          echo "$PROJECTS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies and run tests
+        run: |
+          while IFS= read -r project; do
+            if [ -n "$project" ]; then
+              echo "Testing project: $project"
+              cd "$project"
+              npm ci
+              if npm run test --if-present; then
+                echo "✓ Tests passed for $project"
+              else
+                echo "✗ Tests failed for $project"
+                exit 1
+              fi
+              cd "$GITHUB_WORKSPACE"
+            fi
+          done <<< "${{ steps.find-projects.outputs.projects }}"

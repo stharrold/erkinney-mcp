@@ -1,0 +1,286 @@
+{
+  "title": "Medication Search Templates",
+  "description": "Pre-configured search templates for common medication classes in pregnancy research",
+  "version": "1.0.0",
+  "last_updated": "2025-11-20",
+
+  "templates": {
+    "antibiotics": {
+      "category": "Antibiotics",
+      "medications": [
+        "amoxicillin",
+        "azithromycin",
+        "cephalexin",
+        "penicillin",
+        "erythromycin",
+        "clindamycin"
+      ],
+      "search_terms": [
+        "antibiotic",
+        "infection",
+        "UTI",
+        "prescribed",
+        "bacterial infection"
+      ],
+      "subreddits": [
+        "pregnant",
+        "BabyBumps",
+        "beyondthebump"
+      ],
+      "description": "Common antibiotics prescribed during pregnancy for bacterial infections"
+    },
+
+    "antinausea": {
+      "category": "Anti-Nausea/Antiemetics",
+      "medications": [
+        "ondansetron",
+        "zofran",
+        "metoclopramide",
+        "reglan",
+        "promethazine",
+        "phenergan",
+        "doxylamine",
+        "diclegis"
+      ],
+      "search_terms": [
+        "nausea",
+        "vomiting",
+        "morning sickness",
+        "HG",
+        "hyperemesis",
+        "throw up",
+        "sick"
+      ],
+      "subreddits": [
+        "pregnant",
+        "BabyBumps",
+        "HyperemesisGravidarum"
+      ],
+      "description": "Medications for nausea, vomiting, and hyperemesis gravidarum"
+    },
+
+    "thyroid": {
+      "category": "Thyroid Medications",
+      "medications": [
+        "levothyroxine",
+        "synthroid",
+        "thyroid"
+      ],
+      "search_terms": [
+        "thyroid",
+        "TSH",
+        "hypothyroid",
+        "thyroid medication",
+        "levothyroxine",
+        "synthroid"
+      ],
+      "subreddits": [
+        "pregnant",
+        "tryingforababy",
+        "BabyBumps"
+      ],
+      "description": "Thyroid hormone replacement for hypothyroidism"
+    },
+
+    "antidepressants_ssri": {
+      "category": "Antidepressants (SSRIs)",
+      "medications": [
+        "sertraline",
+        "zoloft",
+        "fluoxetine",
+        "prozac",
+        "escitalopram",
+        "lexapro",
+        "citalopram",
+        "celexa"
+      ],
+      "search_terms": [
+        "antidepressant",
+        "SSRI",
+        "depression",
+        "anxiety",
+        "mental health"
+      ],
+      "subreddits": [
+        "pregnant",
+        "BabyBumps",
+        "PregnancyAfterLoss"
+      ],
+      "description": "Selective serotonin reuptake inhibitors for depression and anxiety"
+    },
+
+    "pain_relief": {
+      "category": "Pain Relief",
+      "medications": [
+        "acetaminophen",
+        "tylenol",
+        "ibuprofen",
+        "advil",
+        "naproxen"
+      ],
+      "search_terms": [
+        "pain",
+        "headache",
+        "pain relief",
+        "safe pain medication"
+      ],
+      "subreddits": [
+        "pregnant",
+        "BabyBumps"
+      ],
+      "description": "Common pain relief medications (note: some NSAIDs not recommended in pregnancy)"
+    },
+
+    "allergy": {
+      "category": "Allergy Medications",
+      "medications": [
+        "cetirizine",
+        "zyrtec",
+        "loratadine",
+        "claritin",
+        "diphenhydramine",
+        "benadryl"
+      ],
+      "search_terms": [
+        "allergy",
+        "allergies",
+        "antihistamine",
+        "seasonal allergies"
+      ],
+      "subreddits": [
+        "pregnant",
+        "BabyBumps"
+      ],
+      "description": "Antihistamines for seasonal and other allergies"
+    },
+
+    "diabetes": {
+      "category": "Diabetes Medications",
+      "medications": [
+        "insulin",
+        "metformin",
+        "glyburide"
+      ],
+      "search_terms": [
+        "diabetes",
+        "gestational diabetes",
+        "GD",
+        "blood sugar",
+        "insulin"
+      ],
+      "subreddits": [
+        "pregnant",
+        "GestationalDiabetes",
+        "BabyBumps"
+      ],
+      "description": "Medications for type 2 and gestational diabetes"
+    },
+
+    "heartburn": {
+      "category": "Heartburn/GERD",
+      "medications": [
+        "omeprazole",
+        "prilosec",
+        "ranitidine",
+        "zantac",
+        "famotidine",
+        "pepcid",
+        "tums",
+        "calcium carbonate"
+      ],
+      "search_terms": [
+        "heartburn",
+        "acid reflux",
+        "GERD",
+        "indigestion"
+      ],
+      "subreddits": [
+        "pregnant",
+        "BabyBumps"
+      ],
+      "description": "Medications for heartburn and gastroesophageal reflux disease"
+    },
+
+    "vitamins": {
+      "category": "Prenatal Vitamins & Supplements",
+      "medications": [
+        "prenatal vitamin",
+        "folic acid",
+        "folate",
+        "iron supplement",
+        "vitamin D"
+      ],
+      "search_terms": [
+        "prenatal vitamin",
+        "prenatal",
+        "folic acid",
+        "iron",
+        "vitamin D",
+        "supplement"
+      ],
+      "subreddits": [
+        "pregnant",
+        "tryingforababy",
+        "BabyBumps"
+      ],
+      "description": "Prenatal vitamins and nutritional supplements"
+    },
+
+    "asthma": {
+      "category": "Asthma Medications",
+      "medications": [
+        "albuterol",
+        "budesonide",
+        "montelukast",
+        "singulair"
+      ],
+      "search_terms": [
+        "asthma",
+        "inhaler",
+        "breathing",
+        "albuterol"
+      ],
+      "subreddits": [
+        "pregnant",
+        "BabyBumps"
+      ],
+      "description": "Medications for asthma management during pregnancy"
+    }
+  },
+
+  "usage": {
+    "example": "Use these templates to quickly search for common medication classes without manually listing each medication name.",
+    "recommended_workflow": [
+      "1. Choose a medication template category",
+      "2. Use batch_search_medications with the medication list",
+      "3. Adjust subreddits based on your research focus",
+      "4. Filter results by date range and engagement"
+    ]
+  },
+
+  "target_subreddits": {
+    "pregnancy_focused": [
+      "pregnant",
+      "BabyBumps",
+      "beyondthebump",
+      "PregnancyAfterLoss",
+      "CautiousBB"
+    ],
+    "conception_focused": [
+      "tryingforababy",
+      "TryingForABaby",
+      "infertility"
+    ],
+    "condition_specific": [
+      "GestationalDiabetes",
+      "HyperemesisGravidarum",
+      "PregnancyAfterLoss"
+    ]
+  },
+
+  "notes": {
+    "medication_names": "Include both generic names (e.g., 'ondansetron') and brand names (e.g., 'Zofran') for comprehensive coverage",
+    "date_ranges": "Default date range 2019-2023 captures 5 years of discussions",
+    "filtering": "Adjust min_comments and min_words based on desired data quality"
+  }
+}

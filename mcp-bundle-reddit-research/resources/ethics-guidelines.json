@@ -1,0 +1,152 @@
+{
+  "framework": "AoIR Ethics 3.0",
+  "title": "Ethical Guidelines for Reddit Research",
+  "version": "1.0.0",
+  "last_updated": "2025-11-20",
+
+  "principles": [
+    {
+      "principle": "Public Data Only",
+      "description": "Collect data only from public subreddits and posts",
+      "requirements": [
+        "No private messages or restricted content",
+        "No interaction with participants",
+        "Read-only access only"
+      ]
+    },
+    {
+      "principle": "Privacy Protection",
+      "description": "Anonymize all personally identifiable information",
+      "requirements": [
+        "SHA-256 anonymization for all usernames",
+        "Consistent hashing within study",
+        "No personal health information collection"
+      ]
+    },
+    {
+      "principle": "Respect Community Norms",
+      "description": "Respect the norms and rules of each subreddit",
+      "requirements": [
+        "Review subreddit rules before collecting data",
+        "Do not post, vote, or interact",
+        "Respect deleted/removed content"
+      ]
+    },
+    {
+      "principle": "Transparency",
+      "description": "Document methodology for reproducibility",
+      "requirements": [
+        "Clear research purpose",
+        "Documented search criteria",
+        "Transparent anonymization method"
+      ]
+    },
+    {
+      "principle": "Minimize Harm",
+      "description": "Consider potential harms and mitigate risks",
+      "requirements": [
+        "No re-identification attempts",
+        "Secure data storage",
+        "Appropriate use of findings"
+      ]
+    }
+  ],
+
+  "compliance_checklist": [
+    {
+      "item": "Data from public subreddits only",
+      "status": "required",
+      "verification": "Confirm all target subreddits are public"
+    },
+    {
+      "item": "No personal health information collected",
+      "status": "required",
+      "verification": "Tool does not access private data"
+    },
+    {
+      "item": "Anonymization applied before analysis",
+      "status": "required",
+      "verification": "SHA-256 hashing enabled by default"
+    },
+    {
+      "item": "Research purpose clearly documented",
+      "status": "required",
+      "verification": "Document research goals and methodology"
+    },
+    {
+      "item": "No deception or covert collection",
+      "status": "required",
+      "verification": "Transparent methodology"
+    },
+    {
+      "item": "IRB approval obtained (if required)",
+      "status": "recommended",
+      "verification": "Consult your institution's IRB"
+    },
+    {
+      "item": "Data security measures in place",
+      "status": "required",
+      "verification": "Secure storage and access controls"
+    },
+    {
+      "item": "No re-identification attempts",
+      "status": "required",
+      "verification": "Do not attempt to identify anonymous users"
+    }
+  ],
+
+  "data_handling": {
+    "collection": {
+      "allowed": [
+        "Public post titles and content",
+        "Public comments",
+        "Publicly visible metadata (scores, timestamps)",
+        "Subreddit information"
+      ],
+      "prohibited": [
+        "Private messages",
+        "Restricted/private subreddit content",
+        "Personal identifying information beyond username",
+        "Health records or private health information"
+      ]
+    },
+    "storage": {
+      "requirements": [
+        "Store anonymized data only",
+        "Use secure file systems with access controls",
+        "Regular backups with encryption",
+        "Retention policy documented"
+      ]
+    },
+    "sharing": {
+      "requirements": [
+        "Share only anonymized data",
+        "Provide clear data dictionaries",
+        "Include methodology documentation",
+        "Respect data use agreements"
+      ]
+    }
+  },
+
+  "references": [
+    {
+      "title": "AoIR Ethics 3.0",
+      "url": "https://aoir.org/ethics/",
+      "description": "Association of Internet Researchers ethical guidelines"
+    },
+    {
+      "title": "PRISMA-ScR",
+      "url": "http://www.prisma-statement.org/Extensions/ScopingReviews",
+      "description": "Scoping review methodology guidelines"
+    },
+    {
+      "title": "Braun & Clarke (2019)",
+      "description": "Reflexive thematic analysis framework"
+    }
+  ],
+
+  "contact": {
+    "researcher": "emkinney@iu.edu",
+    "developer": "samuel.harrold@gmail.com"
+  }
+}

@@ -10,53 +10,56 @@ MCP research toolkit for pregnancy medication studies. Aggregates data from soci
 
 ## Current Status
 
-**Repository Phase**: Initial setup with workflow automation infrastructure
+**Repository Phase**: Reddit Research MCP Bundle implemented and ready for use
 
 **What exists**:
-- Complete 9-skill workflow system in `.claude/skills/`
-- Git workflow automation tools in `tools/`
-- CI/CD pipelines configured (GitHub Actions, Azure Pipelines)
-- Branch structure established (main, develop, contrib/stharrold)
+- ✅ Complete 9-skill workflow system in `.claude/skills/`
+- ✅ Git workflow automation tools in `tools/`
+- ✅ CI/CD pipelines configured (GitHub Actions, Azure Pipelines)
+- ✅ Branch structure established (main, develop, contrib/stharrold)
+- ✅ **Reddit Research MCP Bundle** in `mcp-bundle-reddit-research/` (GitHub Issue #1)
+  - 5 MCP tools for pregnancy medication research
+  - IRB-compliant SHA-256 anonymization
+  - Rate limiting and caching
+  - OAuth 2.0 authentication with Reddit API
+  - Export to JSON/CSV formats
 
-**What's planned** (See GitHub Issue #1):
-- Reddit Research MCP Bundle for pregnancy medication studies
-- Clean Architecture implementation for data collection
-- IRB-compliant anonymization and export tools
+**Reference implementation**: `.tmp/mcp-bundle-mprint/` shows similar MCP bundle pattern
 
-**Reference implementation**: `.tmp/mcp-bundle-mprint/` shows complete MCP bundle with Reddit integration
+## MCP Bundle Architecture
 
-## Planned Architecture
-
-The project will follow Clean Architecture with strict dependency rules:
+The Reddit Research MCP Bundle uses a simplified tool-based architecture:
 
 ```
-src/
-├── domain/        # Business logic (ZERO external dependencies)
-│   ├── entities/  # Core business objects
-│   ├── values/    # Value objects
-│   ├── services/  # Domain services
-│   └── errors/    # Domain errors
-├── application/   # Use cases & port definitions
-│   ├── usecases/  # Application-specific business logic
-│   ├── ports/     # Interfaces for infrastructure
-│   └── dtos/      # Data transfer objects
-├── infrastructure/# External implementations
-│   ├── adapters/  # Port implementations
-│   ├── config/    # Configuration
-│   ├── persistence/# Data storage
-│   └── external/  # External service clients
-└── interfaces/    # Entry points (MCP server, CLI, API)
-    ├── mcp/       # MCP server implementation
-    ├── cli/       # Command-line interface
-    └── api/       # REST/GraphQL APIs
+mcp-bundle-reddit-research/
+├── index.js              # MCP server entry point
+├── src/
+│   ├── auth.js          # Reddit OAuth 2.0 authentication
+│   ├── tools/           # MCP tools (5 research tools)
+│   │   ├── search.js           # search_reddit_threads
+│   │   ├── thread-details.js   # get_thread_details
+│   │   ├── batch-search.js     # batch_search_medications
+│   │   ├── export.js           # export_research_data
+│   │   └── subreddit-info.js   # get_subreddit_info
+│   ├── privacy/         # Privacy & anonymization
+│   │   └── anonymize.js        # SHA-256 username hashing
+│   └── utils/           # Shared utilities
+│       ├── cache.js            # LRU caching
+│       └── rate-limiter.js     # Token bucket rate limiting
+├── resources/           # Pre-configured resources
+│   ├── medication-templates.json   # Common medications
+│   └── ethics-guidelines.json      # AoIR Ethics 3.0
+├── docs/                # Documentation
+│   └── CLAUDE_SETUP.md         # Claude Desktop setup
+└── tests/               # Jest tests
+    └── basic.test.js           # Basic infrastructure tests
 ```
 
-**Dependency Rules** (enforced via dependency-cruiser):
-- Dependencies flow inward only: `Interfaces → Infrastructure → Application → Domain`
-- Domain layer has NO dependencies on other layers
-- Application depends only on Domain
-- Infrastructure depends on Application and Domain
-- Interfaces depends on all inner layers
+**Key Design Patterns**:
+- **Tool-per-file**: Each MCP tool is a self-contained module
+- **Shared utilities**: Rate limiting and caching used across all tools
+- **Privacy-first**: All usernames anonymized through SHA-256 by default
+- **Resource-based configuration**: Pre-configured medication lists and ethics guidelines
 
 ## Development Commands
 
@@ -91,29 +94,47 @@ python .claude/skills/workflow-utilities/scripts/archive_manager.py <file>
 python .claude/skills/workflow-utilities/scripts/validate_versions.py
 ```
 
-### MCP Bundle Commands (Once Implemented)
+### MCP Bundle Commands (Reddit Research)
 
-Future npm commands for the MCP bundle:
+Commands for the Reddit Research MCP Bundle in `mcp-bundle-reddit-research/`:
 
 ```bash
-# Installation
-npm install                  # Install dependencies
-cd server && npm install     # Install server dependencies
-
-# Server
-npm start                    # Start MCP server
-node server/index.js         # Direct server start
+# Setup
+cd mcp-bundle-reddit-research
+npm install                     # Install dependencies
+cp .env.example .env            # Create environment file
+nano .env                       # Edit with Reddit API credentials
 
 # Testing
-npm test                     # Run all tests
-npm run test:unit           # Unit tests only
-npm run test:integration    # Integration tests only
-npm run test:coverage       # Tests with coverage report
+npm test                        # Run all tests
+npm run test:watch              # Watch mode for development
+npm run test:coverage           # Tests with coverage report
+npm run lint                    # Run ESLint
 
-# Architecture Validation
-npm run lint:architecture   # Validate dependency rules
-npm run validate           # Run all validations and tests
+# Running the MCP Server
+npm start                       # Start MCP server
+node index.js                   # Direct server start
+
+# Testing Authentication
+node -e "import('./src/auth.js').then(m => m.createRedditClient()).then(() => console.log('✓ Success')).catch(e => console.error('✗ Error:', e.message))"
 ```
+
+**Claude Desktop Configuration**:
+```json
+{
+  "mcpServers": {
+    "reddit-research": {
+      "command": "node",
+      "args": ["/absolute/path/to/mcp-bundle-reddit-research/index.js"]
+    }
+  }
+}
+```
+
+Config file locations:
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+- **Linux**: `~/.config/Claude/claude_desktop_config.json`
 
 ## Key Technical Requirements
 
@@ -513,33 +534,48 @@ Skills work together seamlessly:
 - **workflow-utilities** → all skills (shared utilities)
 - **agentdb-state-manager** → **workflow-orchestrator** (state tracking)
 
-## Active Development Tasks
+## Reddit Research MCP Bundle
 
-### Current Priority: GitHub Issue #1
-**Title**: Build Reddit Research MCP Bundle for Pregnancy Medication Study
+### ✅ Implemented (GitHub Issue #1)
 
-**Implementation Prompt**: See `ARCHIVED/20251120T170008Z_prompt_issue-1_reddit-research-mcp-bundle.md` for comprehensive implementation guide
+**Location**: `mcp-bundle-reddit-research/`
 
-**Required Tools (MCP)**:
-1. `search_reddit_threads` - Search medication discussions
-2. `get_thread_details` - Retrieve full thread content
-3. `batch_search_medications` - Multi-medication search
-4. `export_research_data` - Export to JSON/CSV
-5. `get_subreddit_info` - Subreddit metadata
+**5 MCP Tools**:
+1. ✅ `search_reddit_threads` - Search medication discussions with filters
+2. ✅ `get_thread_details` - Retrieve full thread content with comments
+3. ✅ `batch_search_medications` - Multi-medication search with progress tracking
+4. ✅ `export_research_data` - Export to JSON/CSV with anonymization
+5. ✅ `get_subreddit_info` - Subreddit metadata and rules
 
-**Technical Stack**:
-- MCP SDK: `@modelcontextprotocol/sdk`
-- Reddit API: `snoowrap` with OAuth 2.0
-- Anonymization: SHA-256 hashing (8-char truncated)
-- Rate Limiting: Token bucket (60 req/min)
-- Caching: LRU cache (100 items)
+**Technical Implementation**:
+- **MCP SDK**: `@modelcontextprotocol/sdk` v0.5.0
+- **Reddit API**: `snoowrap` v1.23.0 with OAuth 2.0
+- **Anonymization**: SHA-256 hashing (8-char truncated) - automatic
+- **Rate Limiting**: Token bucket (60 req/min) with exponential backoff
+- **Caching**: LRU cache (100 items) to reduce API calls
+- **Testing**: Jest with Node.js ESM support
 
-**Success Criteria**:
-- All 5 tools functional with Reddit API
-- Bulletproof anonymization (SHA-256)
-- User-friendly error messages for non-technical researchers
-- Comprehensive documentation and examples
-- ≥80% test coverage
+**Privacy & Ethics**:
+- AoIR Ethics 3.0 compliant
+- IRB-friendly design with built-in anonymization
+- Public data only (no private messages)
+- Transparent methodology for reproducible research
+- Detailed privacy documentation in `PRIVACY.md`
+
+**Documentation**:
+- `mcp-bundle-reddit-research/README.md` - Complete setup and usage guide
+- `mcp-bundle-reddit-research/PRIVACY.md` - Privacy protection details
+- `mcp-bundle-reddit-research/docs/CLAUDE_SETUP.md` - Claude Desktop configuration
+- `mcp-bundle-reddit-research/examples/` - Example research workflows
+
+**Getting Started**:
+```bash
+cd mcp-bundle-reddit-research
+npm install
+cp .env.example .env
+# Edit .env with Reddit API credentials
+npm test  # Verify setup
+```
 
 ## Repository Structure
 
@@ -557,31 +593,47 @@ erkinney-mcp/
 │       ├── workflow-utilities/
 │       ├── agentdb-state-manager/
 │       └── initialize-repository/
-├── .github/workflows/     # CI/CD pipelines
+├── .github/workflows/     # CI/CD pipelines (Python + Node.js)
 ├── .tmp/                  # Reference implementations
-│   ├── mcp-bundle-mprint/    # Complete Reddit MCP example
+│   ├── mcp-bundle-mprint/    # Reddit MCP reference
 │   └── stharrold-templates/  # Workflow system source
 ├── ARCHIVED/              # Implementation prompts and archived files
-├── tools/                 # Standalone Python utilities
-│   ├── git-helpers/
-│   └── workflow-utilities/
-└── [Future: src/, tests/, server/]  # MCP bundle implementation
+├── mcp-bundle-reddit-research/  # ✅ IMPLEMENTED MCP Bundle
+│   ├── src/               # MCP tools and utilities
+│   ├── tests/             # Jest test suite
+│   ├── docs/              # Documentation
+│   ├── examples/          # Example workflows
+│   ├── resources/         # Pre-configured resources
+│   └── index.js           # MCP server entry point
+└── tools/                 # Standalone Python utilities
+    ├── git-helpers/
+    └── workflow-utilities/
 ```
 
-## Reference Implementation
+## MCP Tools Usage Examples
 
-The `.tmp/mcp-bundle-mprint/` directory contains a complete working example:
-- Clean Architecture with dependency-cruiser enforcement
-- Reddit integration via snoowrap
-- SHA-256 anonymization
-- Rate limiting and caching
-- Test suite with ≥80% coverage
-- MCP server implementation
-- Husky pre-commit hooks
+### In Claude Desktop
 
-**Key Files to Study**:
-- `.tmp/mcp-bundle-mprint/server/index.js` - MCP server setup
-- `.tmp/mcp-bundle-mprint/src/infrastructure/adapters/RedditAdapter.js` - Reddit API integration
-- `.tmp/mcp-bundle-mprint/src/domain/services/AnonymizationService.js` - Privacy implementation
+Once configured, use natural language to invoke tools:
 
-Use as reference when implementing this project, but adapt to specific research requirements per Issue #1.
+**Example 1: Search for medication discussions**
+> Search for discussions about ondansetron in the pregnant subreddit from 2021 to 2023
+
+Claude will use `search_reddit_threads` tool automatically.
+
+**Example 2: Get full thread content**
+> Get the full content of thread abc123 including all comments
+
+Claude will use `get_thread_details` tool.
+
+**Example 3: Batch search multiple medications**
+> Search for ondansetron, amoxicillin, and levothyroxine in pregnant and BabyBumps subreddits
+
+Claude will use `batch_search_medications` tool.
+
+**Example 4: Export data**
+> Export threads abc123, def456, ghi789 to CSV format
+
+Claude will use `export_research_data` tool. Files saved to `exports/` directory.
+
+**See `mcp-bundle-reddit-research/examples/` for complete workflow examples.**
