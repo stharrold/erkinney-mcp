@@ -354,6 +354,67 @@ python .claude/skills/git-workflow-manager/scripts/cleanup_release.py {version}
         ) from e
 
 
+def get_github_username():
+    """
+    Get GitHub username from gh CLI.
+
+    Returns:
+        GitHub username string, or None if unavailable
+    """
+    try:
+        result = subprocess.run(
+            ['gh', 'api', 'user', '--jq', '.login'],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        return result.stdout.strip()
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return None
+
+
+def switch_to_contrib_branch():
+    """
+    Switch to contrib/<gh-user> branch after PR creation.
+
+    This ensures the user is left on an editable branch (contrib) rather than
+    the release branch after backmerge PR creation.
+
+    Raises:
+        RuntimeError: If switch fails or contrib branch not found
+    """
+    # Get GitHub username
+    gh_user = get_github_username()
+
+    if not gh_user:
+        print("Warning: Could not determine GitHub username. Staying on current branch.", file=sys.stderr)
+        return
+
+    contrib_branch = f"contrib/{gh_user}"
+
+    # Verify contrib branch exists
+    try:
+        subprocess.run(
+            ['git', 'rev-parse', '--verify', contrib_branch],
+            capture_output=True,
+            check=True
+        )
+    except subprocess.CalledProcessError:
+        print(f"Warning: Branch '{contrib_branch}' not found. Staying on current branch.", file=sys.stderr)
+        return
+
+    # Switch to contrib branch
+    try:
+        subprocess.run(
+            ['git', 'checkout', contrib_branch],
+            capture_output=True,
+            check=True
+        )
+        print(f"✓ Switched to {contrib_branch} (editable branch)", file=sys.stderr)
+    except subprocess.CalledProcessError as e:
+        print(f"Warning: Could not switch to {contrib_branch}: {e.stderr.decode()}", file=sys.stderr)
+
+
 def main():
     """Main entry point for backmerge_release.py script."""
     if len(sys.argv) != 3:
@@ -385,6 +446,10 @@ def main():
         # Step 4: Create PR
         print("Creating pull request for back-merge...", file=sys.stderr)
         pr_url = create_pr(version, target_branch)
+
+        # Step 5: Switch to contrib branch (editable)
+        print("Switching to editable branch...", file=sys.stderr)
+        switch_to_contrib_branch()
 
         # Output
         print(f"\n✓ Created PR: {pr_url}")
