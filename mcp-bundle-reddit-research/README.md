@@ -171,17 +171,19 @@ If successful, you'll see: `✓ Authentication successful`
    %APPDATA%\Claude\claude_desktop_config.json
    ```
 
-2. **Add this configuration** (same as macOS, with Windows path format):
+2. **Add this configuration** (use forward slashes even on Windows):
    ```json
    {
      "mcpServers": {
        "reddit-research": {
          "command": "node",
-         "args": ["C:\\Users\\YourName\\path\\to\\mcp-bundle-reddit-research\\index.js"]
+         "args": ["C:/Users/YourName/path/to/mcp-bundle-reddit-research/index.js"]
        }
      }
    }
    ```
+
+   **Note**: Use forward slashes `/` in JSON paths even on Windows to avoid escaping issues.
 
 ### Linux Configuration
 

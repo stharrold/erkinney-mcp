@@ -71,7 +71,7 @@ echo "Testing Reddit authentication..."
 echo "(This requires valid credentials in .env file)"
 echo ""
 
-if node -e "import('./src/auth.js').then(m => m.createRedditClient()).then(() => { console.log('\x1b[32m✓ Authentication successful!\x1b[0m'); process.exit(0); }).catch(e => { console.error('\x1b[31m✗ Authentication failed:\x1b[0m', e.message); console.log('\x1b[33mℹ Make sure to add your Reddit credentials to .env\x1b[0m'); process.exit(1); })" 2>/dev/null; then
+if node -e "import('./src/auth.js').then(m => m.createRedditClient()).then(() => { console.log('\x1b[32m✓ Authentication successful!\x1b[0m'); process.exit(0); }).catch(e => { console.error('\x1b[31m✗ Authentication failed:\x1b[0m', e.message); console.log('\x1b[33mℹ Make sure to add your Reddit credentials to .env\x1b[0m'); process.exit(1); })"; then
     echo ""
 else
     echo ""
