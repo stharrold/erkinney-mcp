@@ -68,8 +68,7 @@ export async function createRedditClient() {
     } catch (error) {
       redditClient = null;
       throw new Error(
-        'Authentication failed. Please check your REDDIT_USERNAME and REDDIT_PASSWORD. ' +
-        `Details: ${error.message}`
+        'Authentication failed. Please check your REDDIT_USERNAME and REDDIT_PASSWORD.'
       );
     }
 

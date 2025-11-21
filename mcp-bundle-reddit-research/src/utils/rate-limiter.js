@@ -57,7 +57,7 @@ export class RateLimiter {
 
       // Log rate limit event
       this.rateLimitHits++;
-      console.error(`[Rate Limiter] Pausing for ${Math.ceil(waitTime / 1000)}s to respect rate limits...`);
+      console.log(`[INFO] [Rate Limiter] Pausing for ${Math.ceil(waitTime / 1000)}s to respect rate limits...`);
 
       await sleep(waitTime);
       this.refill();
