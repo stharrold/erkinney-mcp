@@ -7,6 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2025-11-21
+
+### Added
+- **Comprehensive Testing Infrastructure** for Reddit Research MCP Bundle
+  - 53 unit tests covering anonymization (19 tests), caching (23 tests), and rate limiting (11 tests)
+  - ESLint configuration with code quality rules
+  - Authentication debug script for troubleshooting Reddit API connections
+- **macOS Keychain Security System** for encrypted credential storage (Issue #16)
+  - Interactive setup script (`keychain-setup.sh`) for secure credential storage
+  - Environment loader (`load-env-from-keychain.sh`) for bash integration
+  - Node.js keychain helper (`keychain-helper.js`) for MCP server integration
+  - MCP server wrapper (`start-with-keychain.sh`) with automatic credential loading
+  - Comprehensive KEYCHAIN.md documentation with setup guides and troubleshooting
+- **Reddit API Application Documentation**
+  - Complete application documentation (`reddit-answers.md`) with all 6 required questions
+  - Reddit application form reference (`reddit-questions.pdf`)
+  - Detailed examples and use cases for academic research approval
+
+### Changed
+- Updated `package.json` with keychain-related npm scripts (`keychain:setup`, `keychain:test`, `keychain:delete`)
+
+### Fixed
+- Removed unused `processedCount` variable in `search.js`
+- Removed unused `anonymizeComment` import in `thread-details.js`
+
 ## [1.1.2] - 2025-11-21
 
 ### Changed
