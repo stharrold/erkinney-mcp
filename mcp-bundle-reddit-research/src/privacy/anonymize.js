@@ -10,9 +10,20 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 /**
- * Salt for hashing (loaded from environment for reproducibility within study)
+ * Salt for hashing (must be set via environment variable for reproducibility and security)
+ * IMPORTANT: You MUST set ANONYMIZATION_SALT in your environment before running.
+ * Never use a publicly-known or default salt. Each study should use a unique, secret salt.
  */
-const SALT = process.env.ANONYMIZATION_SALT || 'mprint-research-2025';
+
+if (!process.env.ANONYMIZATION_SALT) {
+  throw new Error(
+    "ANONYMIZATION_SALT environment variable is not set. " +
+    "You must set a unique, secret salt for each research study to ensure privacy and prevent hash correlation. " +
+    "Example: export ANONYMIZATION_SALT=$(openssl rand -hex 16)"
+  );
+}
+
+const SALT = process.env.ANONYMIZATION_SALT;
 
 /**
  * Cache for consistent hashing (same username always produces same hash)

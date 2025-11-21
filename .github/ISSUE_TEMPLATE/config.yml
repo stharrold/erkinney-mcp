@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Research Inquiry
+    url: mailto:emkinney@iu.edu
+    about: Questions about research methodology or collaboration
+  - name: Technical Support
+    url: mailto:samuel.harrold@gmail.com
+    about: Technical questions or development support
+  - name: Documentation
+    url: https://github.com/stharrold/erkinney-mcp/blob/main/CLAUDE.md
+    about: Read the documentation for Claude Code and workflow guides
