@@ -4,7 +4,7 @@
  */
 
 import { getRedditClient } from '../auth.js';
-import { anonymizeUsername, anonymizeComment } from '../privacy/anonymize.js';
+import { anonymizeUsername } from '../privacy/anonymize.js';
 import { globalRateLimiter, withExponentialBackoff } from '../utils/rate-limiter.js';
 import { threadCache, TTL } from '../utils/cache.js';
 
