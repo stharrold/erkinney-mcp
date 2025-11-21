@@ -10,21 +10,33 @@ MCP research toolkit for pregnancy medication studies. Aggregates data from soci
 
 ## Current Status
 
-**Repository Phase**: Reddit Research MCP Bundle implemented and ready for use
+**Latest Release**: [v1.1.0](https://github.com/stharrold/erkinney-mcp/releases/tag/v1.1.0) - Reddit Research MCP Bundle
+
+**Repository Phase**: Production - MCP Bundle deployed, comprehensive documentation complete
 
 **What exists**:
 - ✅ Complete 9-skill workflow system in `.claude/skills/`
 - ✅ Git workflow automation tools in `tools/`
 - ✅ CI/CD pipelines configured (GitHub Actions, Azure Pipelines)
 - ✅ Branch structure established (main, develop, contrib/stharrold)
+- ✅ **Comprehensive documentation** (README.md, CONTRIBUTING.md, CHANGELOG.md, issue templates)
 - ✅ **Reddit Research MCP Bundle** in `mcp-bundle-reddit-research/` (GitHub Issue #1)
   - 5 MCP tools for pregnancy medication research
-  - IRB-compliant SHA-256 anonymization
-  - Rate limiting and caching
+  - IRB-compliant SHA-256 anonymization (required env var)
+  - Rate limiting (60 req/min) and LRU caching (100 items)
   - OAuth 2.0 authentication with Reddit API
   - Export to JSON/CSV formats
+  - Complete test infrastructure with Jest
+  - Privacy documentation (PRIVACY.md) and ethics guidelines (AoIR Ethics 3.0)
 
-**Reference implementation**: `.tmp/mcp-bundle-mprint/` shows similar MCP bundle pattern
+**Reference materials**:
+- `.tmp/mcp-bundle-mprint/` - Alternative MCP bundle architecture
+- `.tmp/stharrold-templates/` - Workflow skill templates (see `.tmp/README.md`)
+
+**Documentation resources**:
+- [README.md](README.md) - Project overview with quick start
+- [CONTRIBUTING.md](CONTRIBUTING.md) - Development workflow and contribution guidelines
+- [CHANGELOG.md](CHANGELOG.md) - Version history (v1.0.0, v1.0.1, v1.1.0)
 
 ## MCP Bundle Architecture
 
@@ -139,10 +151,15 @@ Config file locations:
 ## Key Technical Requirements
 
 ### IRB Compliance & Privacy
-- SHA-256 username anonymization (8-character hash)
+- **REQUIRED**: `ANONYMIZATION_SALT` environment variable must be set (no default for security)
+  - Generate unique salt per study: `openssl rand -hex 16`
+  - Never use publicly-known or default salts
+  - Prevents hash correlation across studies
+- SHA-256 username anonymization (8-character truncated hash)
 - Public data only (no private messages)
 - No personal health information collection
 - Reproducible methodology for research papers
+- Auth error messages sanitized to prevent credential leakage
 
 ### Data Sources
 - Reddit (r/pregnant, r/babybumps, r/beyondthebump, r/tryingforababy)
@@ -637,3 +654,33 @@ Claude will use `batch_search_medications` tool.
 Claude will use `export_research_data` tool. Files saved to `exports/` directory.
 
 **See `mcp-bundle-reddit-research/examples/` for complete workflow examples.**
+
+## Contributing to This Repository
+
+For detailed contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+**Quick reference**:
+- Default branch: `contrib/<gh-username>` (always work here or in feature branches)
+- Create PRs: `feature/* → contrib/<username> → develop → main`
+- Commit format: `type: description (#ISSUE)` - issue reference required
+- Testing: ≥80% coverage required (lines/functions), ≥75% branches
+- Release notes: Update [CHANGELOG.md](CHANGELOG.md) with each version
+
+**New contributors**:
+1. Fork repository
+2. Create personal branch: `contrib/your-username` from `develop`
+3. Use worktrees for features: `python .claude/skills/git-workflow-manager/scripts/create_worktree.py feature my-feature contrib/your-username`
+4. Follow 6-phase workflow (Planning → Implementation → Quality → Integration → Release → Hotfix)
+5. See CONTRIBUTING.md for complete workflow details
+
+## Code Quality Standards
+
+**From PR #9 review (all future code should follow)**:
+- Use robust date formatting (not string manipulation): `new Date().getFullYear()` etc.
+- No stderr suppression in user-facing scripts - show helpful error messages
+- Require environment variables for security-sensitive config (no defaults)
+- Use `console.log` for info messages, `console.error` only for actual errors
+- Sanitize error messages to prevent credential/PII leakage
+- Pin exact versions for reproducibility: `"@modelcontextprotocol/sdk": "0.5.0"` not `^0.5.0`
+- Use forward slashes in JSON paths even on Windows
+- Document privacy/ethics considerations in all data collection features
