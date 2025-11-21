@@ -129,10 +129,8 @@ export async function searchRedditThreads(params) {
 
     // Filter and transform results
     const threads = [];
-    let processedCount = 0;
 
     for (const submission of searchResults) {
-      processedCount++;
 
       // Skip if before start date or after end date
       const createdTimestamp = submission.created_utc;
