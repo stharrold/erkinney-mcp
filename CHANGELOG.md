@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.2] - 2025-11-21
+
+### Changed
+- Synchronized `backmerge_release.py` with template version for better error handling
+  - Added Issue #152 reference for error handling clarity
+  - Added Issue #147 comment about empty list check
+- Enhanced CLAUDE.md with critical MCP bundle architecture documentation
+  - Added dual-project structure clarification (Python workflow + Node.js MCP bundle)
+  - Documented singleton authentication pattern
+  - Documented LRU cache Map-based eviction details
+  - Documented token bucket rate limiting mechanism
+  - Added ES Modules requirements and stdio transport notes
+  - Enhanced command section with required .env variables and ESM testing context
+
+### Fixed
+- Improved code traceability with issue references in workflow scripts
+
+## [1.1.1] - 2025-11-21
+
 ### Added
 - Comprehensive root README.md with badges, quick start, and project overview
 - CHANGELOG.md for tracking version history
