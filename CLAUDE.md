@@ -8,6 +8,12 @@ MCP research toolkit for pregnancy medication studies. Aggregates data from soci
 
 **Contact**: emkinney@iu.edu (Research), samuel.harrold@gmail.com (Development)
 
+**Dual-Project Structure**: This repository contains TWO independent systems:
+1. **Production MCP Bundle** (Node.js): `mcp-bundle-reddit-research/` - Reddit research tools
+2. **Development Workflow** (Python): `.claude/skills/` - Automation system for building MCP bundles
+
+These systems are intentionally separate - workflow skills use Python (stdlib-only), while MCP bundles use Node.js (MCP SDK requirement).
+
 ## Current Status
 
 **Latest Release**: [v1.1.0](https://github.com/stharrold/erkinney-mcp/releases/tag/v1.1.0) - Reddit Research MCP Bundle
@@ -46,7 +52,7 @@ The Reddit Research MCP Bundle uses a simplified tool-based architecture:
 mcp-bundle-reddit-research/
 ├── index.js              # MCP server entry point
 ├── src/
-│   ├── auth.js          # Reddit OAuth 2.0 authentication
+│   ├── auth.js          # Reddit OAuth 2.0 authentication (singleton pattern)
 │   ├── tools/           # MCP tools (5 research tools)
 │   │   ├── search.js           # search_reddit_threads
 │   │   ├── thread-details.js   # get_thread_details
@@ -56,9 +62,9 @@ mcp-bundle-reddit-research/
 │   ├── privacy/         # Privacy & anonymization
 │   │   └── anonymize.js        # SHA-256 username hashing
 │   └── utils/           # Shared utilities
-│       ├── cache.js            # LRU caching
-│       └── rate-limiter.js     # Token bucket rate limiting
-├── resources/           # Pre-configured resources
+│       ├── cache.js            # LRU caching (100 items, TTL-based)
+│       └── rate-limiter.js     # Token bucket rate limiting (60 req/min)
+├── resources/           # Pre-configured resources (loaded as MCP resources)
 │   ├── medication-templates.json   # Common medications
 │   └── ethics-guidelines.json      # AoIR Ethics 3.0
 ├── docs/                # Documentation
@@ -69,9 +75,17 @@ mcp-bundle-reddit-research/
 
 **Key Design Patterns**:
 - **Tool-per-file**: Each MCP tool is a self-contained module
-- **Shared utilities**: Rate limiting and caching used across all tools
-- **Privacy-first**: All usernames anonymized through SHA-256 by default
-- **Resource-based configuration**: Pre-configured medication lists and ethics guidelines
+- **Singleton authentication**: Single Reddit client instance shared across all tools (auth.js:15)
+- **Automatic caching**: LRU cache with Map-based eviction (cache.js:16) - moves accessed items to end
+- **Token bucket throttling**: Refills tokens over time to prevent rate limit violations (rate-limiter.js:38)
+- **Privacy-by-default**: All usernames automatically anonymized via SHA-256 in tool outputs
+- **Resource-based configuration**: Pre-configured medication lists exposed as MCP resources
+
+**Critical Architecture Notes**:
+- **ES Modules only**: Package uses `"type": "module"` - all imports must use .js extension
+- **Stdio transport**: MCP server uses stdin/stdout for Claude Desktop communication
+- **Stateless tools**: Each tool invocation is independent; shared state only in auth singleton
+- **Async everywhere**: All tool functions are async to handle Reddit API calls
 
 ## Development Commands
 
@@ -117,18 +131,25 @@ npm install                     # Install dependencies
 cp .env.example .env            # Create environment file
 nano .env                       # Edit with Reddit API credentials
 
+# Required .env variables:
+# REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET, REDDIT_USERNAME,
+# REDDIT_PASSWORD, REDDIT_USER_AGENT, ANONYMIZATION_SALT
+
 # Testing
-npm test                        # Run all tests
+npm test                        # Run all tests (requires --experimental-vm-modules for ESM)
 npm run test:watch              # Watch mode for development
 npm run test:coverage           # Tests with coverage report
-npm run lint                    # Run ESLint
+npm run lint                    # Run ESLint on src/ and tests/
 
 # Running the MCP Server
-npm start                       # Start MCP server
+npm start                       # Start MCP server (stdio transport)
 node index.js                   # Direct server start
 
-# Testing Authentication
+# Testing Authentication (ESM one-liner)
 node -e "import('./src/auth.js').then(m => m.createRedditClient()).then(() => console.log('✓ Success')).catch(e => console.error('✗ Error:', e.message))"
+
+# Debugging: Run single test file
+node --experimental-vm-modules node_modules/jest/bin/jest.js tests/basic.test.js
 ```
 
 **Claude Desktop Configuration**:
