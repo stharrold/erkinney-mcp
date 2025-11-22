@@ -1,368 +1,739 @@
 ---
-title: Reddit API Application Submission
-app_name: erkinney-mcp-bundle
-app_type: script
+title: Reddit API Application - Comprehensive Submission
+version: 2.0.0
 date_created: 2025-11-21
+date_updated: 2025-11-21
 status: draft
+prior_submission:
+  request_id: 15987717
+  date: 2025-11-21
+  result: DENIED
+  reason: "Not in compliance with Reddit's Responsible Builder Policy and/or lacks necessary details"
 contacts:
-  researcher: emkinney@iu.edu
+  principal_investigator: squinney@iu.edu
+  research_staff: emkinney@iu.edu
   developer: samuel.harrold@gmail.com
+irb:
+  protocol: 28905
+  status: Exempt (Category 4(i))
+  approval_date: 2025-10-31
+  institution: Indiana University
 repository: https://github.com/stharrold/erkinney-mcp
-purpose: Academic research - pregnancy medication discussions
-compliance:
-  - IRB
-  - AoIR Ethics 3.0
-  - SHA-256 anonymization
 ---
 
-# Reddit API Application Submission
+# Reddit API Application - Comprehensive Submission
 
-## Application Details
+This document provides answers to ALL questions from BOTH Reddit API request forms (Developer and Researcher), with explicit policy/terms references for each answer.
 
-**App Name:** `erkinney-mcp-bundle`
+## Table of Contents
 
-**App Type:** Script (Script for personal use. Will only have access to the developer's account)
-
-**App Description:**
-Academic research prototype for analyzing medication discussions in pregnancy web app subreddits. Pre-IRB development phase for planned qualitative health communication study. Read-only data collection - no posting/interaction. Will transition to Research API upon approval of r/reddit4researchers proposal. Contact: samuel.harrold@gmail.com (developer) on behalf of emkinney@iu.edu (researcher).
-
-**About URL:** https://github.com/stharrold/erkinney-mcp
-
-**Redirect URI:** https://github.com/stharrold/erkinney-mcp
+1. [Part A: Researcher Form Questions](#part-a-researcher-form-questions)
+2. [Part B: Developer Form Questions](#part-b-developer-form-questions)
+3. [Appendix: Policy Compliance Matrix](#appendix-policy-compliance-matrix)
+4. [Appendix: Attachments](#appendix-attachments)
 
 ---
 
-## Question 1: What benefit/purpose will the bot/app have for Redditors?
+# Part A: Researcher Form Questions
+
+**Form URL:** https://support.reddithelp.com/hc/en-us/requests/new?ticket_form_id=14868593862164
+**Role Selection:** "I'm a researcher"
+
+---
+
+## A1. What do you need assistance with?
+
+**Answer:** API Access Request
+
+---
+
+## A2. Your email address
+
+**Answer:** emkinney@iu.edu
+
+> **Policy Compliance:**
+> - The Researcher form explicitly states: *"Please submit this form from a university-affiliated email address or your request will be denied."*[^1]
+> - Dr. Emily Kinney is the Research Staff member listed on IRB Protocol #28905 and holds an Indiana University institutional email.
+
+[^1]: Reddit Researcher API Request Form, email field instruction
+
+---
+
+## A3. Which role best describes your reason for requesting API access?
+
+**Answer:** I'm a researcher
+
+> **Policy Compliance:**
+> - Responsible Builder Policy, Researchers Section: *"This section applies to academic researchers affiliated with an accredited university and Reddit for Researchers participants who are granted access solely for non-commercial purposes."*[^2]
+> - Indiana University is an accredited R1 research university.
+
+[^2]: Responsible Builder Policy, "Researchers" section, para. 1
+
+---
+
+## A4. Reddit account name
+
+**Answer:** [To be created by Dr. Kinney with @iu.edu email verification]
+
+> **Note:** A new Reddit account should be created by Dr. Kinney using her institutional email to maintain consistency between the API request submitter and the Reddit account holder.
+
+---
+
+## A5. Educational institution
+
+**Answer:** Indiana University School of Medicine
+
+> **Policy Compliance:**
+> - Responsible Builder Policy, Researchers Section requires affiliation with *"an accredited university"*[^2]
+> - IRB Protocol #28905 lists Indiana University as the reviewing institution
+> - Principal Investigator: Sara Quinney, PhD (squinney@iu.edu)
+> - Research Staff: Emily Kinney (emkinney@iu.edu)
+
+---
+
+## A6. Location of educational institution (Country)
+
+**Answer:** United States
+
+---
+
+## A7. Research purpose
+
+**Answer:**
+
+### DETAILED RESEARCH PROPOSAL
+
+#### 1. Research Purpose
+
+This study examines how pregnant individuals discuss medication use, side effects, and healthcare provider interactions on Reddit pregnancy communities. The research aims to:
+
+1. **Understand medication information-seeking behavior** in online pregnancy communities
+2. **Identify gaps in healthcare communication** that could improve patient education
+3. **Analyze peer support patterns** in pregnancy health discussions
+4. **Contribute to NIH-funded research** on pregnancy medication safety (MPRINT Center, NICHD P30HD106451)
+
+> **Policy Compliance:**
+> - Responsible Builder Policy, Researchers Section: Research is *"solely for non-commercial purposes"*[^2]
+> - This is federally-funded academic research with no commercial application
+> - Data API Terms §2.4: We will *"copy and display the User Content using the Data API solely as necessary to develop, deploy, distribute, and run your App"*[^3]
+
+[^3]: Data API Terms, Section 2.4 "User Content"
+
+#### 2. Specific Data Requirements
+
+**Target Subreddits:**
+- r/pregnant
+- r/babybumps
+- r/beyondthebump
+- r/tryingforababy
+
+**Data Elements Collected:**
+| Element | Purpose | Retention |
+|---------|---------|-----------|
+| Post titles | Identify medication discussions | Study duration only |
+| Post bodies | Qualitative content analysis | Study duration only |
+| Comment text | Understand peer responses | Study duration only |
+| Timestamps | Temporal analysis | Study duration only |
+| Subreddit | Community context | Study duration only |
+| Vote counts | Community engagement metrics | Study duration only |
+
+**Data Elements NOT Collected:**
+- Usernames (anonymized via SHA-256 hash immediately upon collection)[^4]
+- User profiles or post history
+- Private messages
+- Email addresses or real names
+- Location data
+- Any Protected Health Information (PHI)
+
+> **Policy Compliance:**
+> - Responsible Builder Policy, "Zero Tolerance for Privacy Violations": *"You are strictly prohibited from processing data to derive or infer potentially sensitive characteristics about Reddit users (e.g., health, political affiliation, sexual orientation)."*[^5]
+> - Our study analyzes discussion patterns and themes, NOT individual user characteristics
+> - Responsible Builder Policy: *"you must never attempt to re-identify, de-anonymize, or reverse engineer data about Redditors including by matching data with off-platform identifiers"*[^5]
+> - SHA-256 hashing with unique study-specific salt prevents re-identification
+
+[^4]: Implementation: `mcp-bundle-reddit-research/src/privacy/anonymize.js`
+[^5]: Responsible Builder Policy, "Zero Tolerance for Privacy Violations" section
+
+#### 3. Ethical Considerations
+
+**IRB Approval:**
+- **Protocol Number:** 28905
+- **Status:** Exempt (Category 4(i) - publicly available information)
+- **Approval Date:** October 31, 2025
+- **Reviewing Institution:** Indiana University IRB
+- **Principal Investigator:** Sara Quinney, PhD
+
+**AoIR Ethics 3.0 Compliance:**
+This research follows the Association of Internet Researchers (AoIR) Ethics Guidelines 3.0:
+- Public data only (no expectation of privacy in public posts)
+- No direct contact with or deception of Reddit users
+- Anonymization of all user identifiers before analysis
+- Aggregated findings only (no individual quotes without additional ethical review)
+- Transparent methodology for reproducible research
+
+**Data Handling Compliance:**
+
+> **Policy Compliance:**
+> - Responsible Builder Policy, Data Handling and Retention: *"Researchers must not retain copies of data beyond what is strictly necessary for the immediate research project."*[^6]
+> - Data will be retained only for the duration of the active research project
+> - Responsible Builder Policy: *"Researchers must re-run queries against the most recent data export to ensure findings are up-to-date with any data removals or deletions."*[^6]
+> - Our tool re-queries Reddit API for each analysis session rather than maintaining a static database
+> - Data API Terms §6: Upon termination, we will *"delete any cached or stored User Content and Materials... This includes any data or models that were derived from User Content"*[^7]
+
+[^6]: Responsible Builder Policy, "Researchers > Data Handling and Retention" section
+[^7]: Data API Terms, Section 6 "Termination"
+
+#### 4. No AI/ML Training
+
+> **EXPLICIT COMPLIANCE STATEMENT:**
+> - Responsible Builder Policy, "No Unapproved Commercialization or AI Training": *"You must not sell, license, share, or otherwise commercialize Reddit data without express written approval. This extends to commercial and non-commercial mining, scraping, or using data for purposes like ads targeting or to train machine learning or AI models."*[^8]
+> - Developer Terms §4.2: Prohibits using Reddit data *"to train large language, artificial intelligence, or other algorithmic models or related services without our permission"*[^9]
+> - Data API Terms §2.4: *"no other rights or licenses are granted or implied, including any right to use User Content for other purposes, such as for training a machine learning or AI model, without the express permission of rightsholders"*[^3]
+> - Data API Terms §3.2: Prohibits using the API *"to encourage or promote illegal activity or violation of third party rights (including using User Content to train a machine learning or AI model without the express permission of rightsholders)"*[^10]
+
+**Our Commitment:** This research tool performs **qualitative content analysis only**. No machine learning models will be trained on Reddit data. The Claude Desktop integration is for **query assistance only** (helping researchers formulate searches), NOT for training AI on Reddit content.
+
+[^8]: Responsible Builder Policy, "Other Prohibited Practices > No Unapproved Commercialization or AI Training"
+[^9]: Developer Terms, Section 4.2 "Other Use Restrictions"
+[^10]: Data API Terms, Section 3.2 "Restrictions"
+
+---
+
+## A8. Do you require direct database access?
+
+**Answer:** No
+
+> **Policy Compliance:**
+> - We will access data exclusively through the approved Reddit Data API
+> - Data API Terms §2.8: *"You will only access (or attempt to access) Data APIs using Access Info described in the Developer Documentation"*[^11]
+> - No scraping, crawling, or database access required
+
+[^11]: Data API Terms, Section 2.8 "Permitted Access"
+
+---
+
+## A9. What is your project's estimated timeline and current status?
+
+**Answer:**
+
+### Project Timeline
+
+| Phase | Status | Description |
+|-------|--------|-------------|
+| **Tool Development** | ✅ Complete | MCP bundle with 5 research tools implemented |
+| **IRB Approval** | ✅ Complete | Protocol #28905 approved Oct 31, 2025 |
+| **API Access Request** | 🔄 In Progress | This submission |
+| **Pilot Data Collection** | Pending | Initial medication search validation |
+| **Full Data Collection** | Pending | 6-month collection period |
+| **Analysis & Publication** | Pending | Qualitative coding and manuscript preparation |
+
+### Current Status
+
+- **Technical Implementation:** Complete and tested (see repository)
+- **IRB Status:** Approved, Exempt Category 4(i)
+- **Funding:** Active (NIH/NICHD MPRINT Center, P30HD106451)
+- **Prior Submission:** Request #15987717 denied Nov 21, 2025; this is a revised submission addressing compliance concerns
+
+---
+
+## A10. Checkbox: Non-commercial and academic purposes
+
+**Answer:** ☑️ I understand that my research must be non-commercial and for academic purposes only.
+
+> **Policy Compliance:**
+> - Responsible Builder Policy, Researchers Section: *"granted access solely for non-commercial purposes"*[^2]
+> - Developer Terms §4.1: Commercial use requires *"express written approval"*[^12]
+> - This research is:
+>   - Funded by federal grants (NIH/NICHD), not commercial sponsors
+>   - Conducted at a non-profit academic institution
+>   - Intended for peer-reviewed publication, not commercial products
+>   - Not generating revenue from Reddit data
+
+[^12]: Developer Terms, Section 4.1 "Commercial Use Restrictions"
+
+---
+
+## A11. Checkbox: No content manipulation
+
+**Answer:** ☑️ If granted access, I agree not to perform any content manipulation on the site including submitting posts, comments, or upvoting through the API.
+
+> **Policy Compliance:**
+> - Responsible Builder Policy, "Prohibited Bot Activities": *"Bots must not manipulate Reddit's features (e.g., voting, karma) or circumvent safety mechanisms"*[^13]
+> - Developer Terms §4.2: Prohibits actions that *"spam, incentivize, or harass Users"*[^9]
+> - Our tool is **READ-ONLY**:
+>   - No posting capability implemented
+>   - No commenting capability implemented
+>   - No voting capability implemented
+>   - No messaging capability implemented
+>   - OAuth scopes requested: `read` only
+
+[^13]: Responsible Builder Policy, "Bots and Automated Activity > Prohibited Bot Activities"
+
+---
+
+## A12. Attachments
+
+**Attachments to include with submission:**
+
+1. **IRB Approval Letter** - Protocol #28905 (IRB_28905.pdf)
+2. **Source Code Repository** - https://github.com/stharrold/erkinney-mcp
+3. **Privacy Documentation** - mcp-bundle-reddit-research/PRIVACY.md
+4. **This Compliance Document** - reddit-answers.md
+
+---
+
+# Part B: Developer Form Questions
+
+**Form URL:** https://support.reddithelp.com/hc/en-us/requests/new?ticket_form_id=14868593862164
+**Role Selection:** "I'm a developer"
+
+> **Note:** The Developer form may be used as a fallback if the Researcher form is unavailable or if Reddit directs us to this path. These answers are provided for completeness.
+
+---
+
+## B1. What do you need assistance with?
+
+**Answer:** API Access Request
+
+---
+
+## B2. Your email address
+
+**Answer:** emkinney@iu.edu (preferred) or samuel.harrold@gmail.com (developer)
+
+> **Policy Compliance:**
+> - Developer Terms §1.3: *"Reddit may ask you to provide us with information about your App... and yourself (e.g., your name and email)... This information must be up to date and accurate at all times."*[^14]
+
+[^14]: Developer Terms, Section 1.3 "Your Information"
+
+---
+
+## B3. Which role best describes your reason for requesting API access?
+
+**Answer:** I'm a developer
+
+---
+
+## B4. What is your inquiry?
+
+**Answer:** I'm a developer and want to build a Reddit App that does not work in the Devvit ecosystem.
+
+> **Policy Compliance:**
+> - Responsible Builder Policy, Developers Section: *"Developers should use the Developer Platform ('Devvit') to build apps on Reddit... If your use case is not supported by Devvit, file a ticket here."*[^15]
+> - This is a research data collection tool, not an interactive Reddit application, making Devvit unsuitable (see B8 for details)
+
+[^15]: Responsible Builder Policy, "Developers" section
+
+---
+
+## B5. Reddit account name
+
+**Answer:** stharrold (developer) or [new account to be created by Dr. Kinney]
+
+> **Policy Compliance:**
+> - Responsible Builder Policy, Introduction: *"You must not misrepresent or mask how or why you are accessing Reddit data. This prohibits registering multiple accounts or submitting multiple requests for the same use case."*[^16]
+> - We are transparent about both developer and researcher identities
+
+[^16]: Responsible Builder Policy, "Introduction"
+
+---
+
+## B6. What benefit/purpose will the bot/app have for Redditors?
+
+**Answer:**
 
 ### Academic Research Tool - Pregnancy Medication Safety
 
-This is a research tool for Indiana University's health communication study examining how pregnant individuals discuss medications on Reddit. The app will:
+This tool supports Indiana University's NIH-funded research examining medication discussions in pregnancy communities. Benefits to Reddit and Redditors include:
 
-1. Help researchers understand medication information-seeking behavior in pregnancy communities
-2. Identify gaps in healthcare communication that could improve patient education
-3. Analyze peer support patterns in pregnancy health discussions
-4. Contribute to published academic research on health communication
+1. **Advancing Public Health Knowledge**
+   - Research findings will improve understanding of how pregnant individuals seek medication information
+   - Results will be published in peer-reviewed journals accessible to healthcare providers
+   - May lead to improved patient education materials
 
-The app is READ-ONLY (no posting/voting) and implements:
-- IRB-compliant anonymization (SHA-256 hashing of all usernames)
-- AoIR Ethics 3.0 guidelines for internet research
-- Public data only (no private messages)
-- Rate limiting to respect Reddit's infrastructure
+2. **Respecting User Privacy**
+   - All usernames automatically anonymized via SHA-256 hashing[^4]
+   - No individual users identifiable in any publications
+   - Public data only; no private message access
 
-Research findings will be shared with the academic community to improve healthcare communication. No individual Reddit users will be identifiable in any publications.
+3. **Minimal Platform Impact**
+   - READ-ONLY access (no posting, commenting, or voting)
+   - Rate-limited to 60 requests/minute with token bucket algorithm[^17]
+   - LRU caching reduces redundant API calls[^18]
 
-**Research Contact:** Dr. Emily Kinney, Indiana University, School of Medicine (emkinney@iu.edu)
-**Developer Contact:** Samuel Harrold (samuel.harrold@gmail.com)
+4. **Transparent Methodology**
+   - Open-source code available for audit: https://github.com/stharrold/erkinney-mcp
+   - IRB-approved research protocol (#28905)
+   - AoIR Ethics 3.0 compliant
+
+> **Policy Compliance:**
+> - Developer Terms §3.2: *"You are solely responsible for your App (including its development, operation, maintenance, support, distribution, use, and App Content)"*[^19]
+> - We maintain full documentation and support for this research tool
+
+[^17]: Implementation: `mcp-bundle-reddit-research/src/utils/rate-limiter.js`
+[^18]: Implementation: `mcp-bundle-reddit-research/src/utils/cache.js`
+[^19]: Developer Terms, Section 3.2 "App Users"
 
 ---
 
-## Question 2: Provide a detailed description of what the Bot/App will be doing on the Reddit platform
+## B7. Provide a detailed description of what the Bot/App will be doing on the Reddit platform
+
+**Answer:**
 
 ### TECHNICAL DESCRIPTION - READ-ONLY ACADEMIC RESEARCH TOOL
 
-This application performs systematic, read-only data collection from public Reddit posts to study how pregnant individuals discuss medications and seek health information. It will NOT post, comment, vote, send messages, or interact with content in any way.
+This application is a command-line research tool that performs **READ-ONLY** data collection from public Reddit posts and comments. It will **NOT** post, comment, vote, send messages, or interact with Reddit content in any way.
 
 ---
 
-### OPERATION 1: SEARCH PUBLIC POSTS FOR MEDICATION DISCUSSIONS
+#### OPERATION 1: Search Public Posts (`search_reddit_threads`)
 
-**Example Search Query:**
+**Purpose:** Find medication-related discussions in pregnancy subreddits
+
+**API Endpoint:**
+```
+GET /search.json?q={medication}+subreddit:{subreddit}&t=all&sort=relevance&limit=100
+```
+
+**Example Query:**
 - Medication: "ondansetron" (anti-nausea medication)
 - Subreddits: r/pregnant, r/babybumps
 - Date range: January 2021 - December 2023
-- Minimum comments: 5 (indicates active discussion)
-- Minimum word count: 50 (substantive posts only)
 
-**API Call:**
+**Data Returned (with anonymization):**
+```json
+{
+  "thread_id": "t3_abc123",
+  "title": "Ondansetron during first trimester?",
+  "author_hash": "a7b3c9d2",
+  "subreddit": "pregnant",
+  "created_utc": "2022-03-15T14:23:00Z",
+  "num_comments": 47,
+  "score": 89
+}
 ```
-GET /search.json?q=ondansetron+subreddit:pregnant+OR+subreddit:babybumps&t=all&sort=relevance&limit=100
-```
 
-**Example Results Collected:**
-- Thread ID: `t3_abc123`
-- Title: "Ondansetron during first trimester - experiences?"
-- Body: "My OB prescribed Zofran for morning sickness. Has anyone taken this? Worried about side effects..."
-- Author: [ANONYMIZED to "a7b3c9d2" via SHA-256]
-- Timestamp: 2022-03-15T14:23:00Z
-- Subreddit: r/pregnant
-- Comments: 47
-- Upvotes: 95
-- Downvotes: 6
+> **Policy Compliance:**
+> - Data API Terms §2.9: *"Reddit may set and enforce limits on your use of the Data APIs"*[^20]
+> - We respect all rate limits and implement our own conservative limits (60 req/min)
+> - Data API Terms §2.4: User Content is *"owned by Users and not by Reddit"*[^3] - we do not claim ownership
 
-Researcher would collect 50-100 threads per medication for analysis.
+[^20]: Data API Terms, Section 2.9 "API Limitations"
 
 ---
 
-### OPERATION 2: RETRIEVE FULL THREAD CONTENT WITH COMMENTS
+#### OPERATION 2: Retrieve Thread Content (`get_thread_details`)
 
-**Example Thread Retrieval:**
-- Thread ID: `t3_abc123` (from search results above)
+**Purpose:** Get full thread content including comments for qualitative analysis
 
-**API Call:**
+**API Endpoint:**
 ```
-GET /r/pregnant/comments/abc123.json
-```
-
-**Example Comment Tree Collected:**
-```
-Post (ID: t3_abc123)
-├─ Comment 1 (ID: c_xyz789)
-│  Author: [ANONYMIZED to "f4e8d1c7"]
-│  Text: "I took Zofran from weeks 6-12. It really helped with nausea..."
-│  Timestamp: 2022-03-15T15:45:00Z
-│  Upvotes: 25
-│  Downvotes: 2
-│  ├─ Reply 1.1 (ID: c_def456)
-│  │  Author: [ANONYMIZED to "b9a2e6f3"]
-│  │  Text: "Did you have any constipation? That's the main side effect I've read about."
-│  │  Timestamp: 2022-03-15T16:12:00Z
-│  │  Upvotes: 9
-│  │  Downvotes: 1
-│  └─ Reply 1.2 (ID: c_ghi789)
-│     Author: [ANONYMIZED to "f4e8d1c7"] (same user as Comment 1)
-│     Text: "Yes, definitely had constipation. My doctor recommended..."
-│     Timestamp: 2022-03-15T17:03:00Z
-│     Upvotes: 13
-│     Downvotes: 1
-├─ Comment 2 (ID: c_jkl012)
-│  Author: [ANONYMIZED to "c5d9e2a1"]
-│  Text: "My experience was different. I tried it for two weeks but..."
-│  Timestamp: 2022-03-15T18:20:00Z
-│  Upvotes: 17
-│  Downvotes: 2
-...continues for all 47 comments
+GET /r/{subreddit}/comments/{thread_id}.json
 ```
 
-Collects up to 500 comments per thread to capture full discussion context.
+**Data Processing:**
+1. Retrieve thread and comments
+2. **Immediately anonymize all usernames** via SHA-256 hash
+3. Store only anonymized data locally
+4. Never store original usernames
 
-**Note on Upvotes/Downvotes:** These metrics indicate community engagement and perceived value of information. High upvotes suggest content the community found helpful or relevant. We record these for qualitative analysis of what information pregnant individuals value most, but do not use them to filter data or rank users.
+> **Policy Compliance:**
+> - Responsible Builder Policy: *"you must never attempt to re-identify, de-anonymize, or reverse engineer data about Redditors"*[^5]
+> - SHA-256 hashing is one-way; original usernames cannot be recovered
+> - Unique salt per study prevents cross-study correlation
 
 ---
 
-### OPERATION 3: BATCH SEARCH MULTIPLE MEDICATIONS
+#### OPERATION 3: Batch Search (`batch_search_medications`)
 
-**Example Batch Query:**
-Medications: `["ondansetron", "amoxicillin", "levothyroxine", "metformin", "sertraline"]`
+**Purpose:** Efficiently search multiple medications across subreddits
 
 **Process:**
-1. Search ondansetron → collect 75 threads
-   [Wait 1 second for rate limiting]
-2. Search amoxicillin → collect 62 threads
-   [Wait 1 second for rate limiting]
-3. Search levothyroxine → collect 83 threads
-   [Wait 1 second for rate limiting]
-...continues for all medications
-
-**Total API calls:** ~250 searches + ~220 thread retrievals = 470 calls over ~8 minutes
-
----
-
-### OPERATION 4: GET SUBREDDIT METADATA
-
-**Example:**
-
-**API Call:**
 ```
-GET /r/pregnant/about.json
+For each medication in [ondansetron, amoxicillin, levothyroxine, ...]:
+    1. Execute search query
+    2. Wait for rate limit token
+    3. Store anonymized results
+    4. Log progress for researcher
 ```
 
-**Data Collected:**
-- Subreddit name: "pregnant"
-- Display name: "r/pregnant"
-- Subscribers: 234,567
-- Description: "A supportive community for those expecting..."
-- Rules: ["Be kind and supportive", "No medical advice", ...]
-- Created: 2010-06-15
-- Public/Private: public
-
-**Purpose:** Document research context, understand community norms, cite subreddit rules in publications.
+> **Policy Compliance:**
+> - Responsible Builder Policy: *"You must not circumvent or exceed access limits or engage in excessive usage that disrupts our APIs"*[^16]
+> - Token bucket rate limiting ensures we never exceed 60 requests/minute
+> - Exponential backoff on 429 errors
 
 ---
 
-### OPERATION 5: EXPORT DATA FOR ANALYSIS
+#### OPERATION 4: Get Subreddit Info (`get_subreddit_info`)
 
-**Example Export (CSV format):**
-```csv
-thread_id,author_hash,title,body,created_date,subreddit,num_comments,upvotes,downvotes
-t3_abc123,a7b3c9d2,"Ondansetron during first trimester","My OB prescribed...",2022-03-15T14:23:00Z,pregnant,47,95,6
-t3_def456,b8c3d9e1,"Zofran and constipation tips?","I've been taking...",2022-04-02T09:15:00Z,babybumps,23,61,5
-...
+**Purpose:** Document research context (subscriber count, rules, description)
+
+**API Endpoint:**
+```
+GET /r/{subreddit}/about.json
 ```
 
-**Researchers import into NVivo for qualitative coding:**
-- Theme: "Side effects discussed"
-- Theme: "Doctor recommendations"
-- Theme: "Peer support patterns"
+**Data Returned:**
+- Subreddit name and description
+- Subscriber count
+- Community rules (to cite in methodology)
+- Public/private status
+
+> **Policy Compliance:**
+> - This is metadata about the subreddit, not user data
+> - Used for contextualizing research findings in publications
 
 ---
 
-### PRIVACY SAFEGUARDS - CONCRETE EXAMPLES
+#### OPERATION 5: Export Data (`export_research_data`)
 
-**Username Anonymization:**
+**Purpose:** Export anonymized data for analysis in NVivo/Atlas.ti
+
+**Export Formats:**
+- CSV (for Excel/SPSS)
+- JSON (for custom tools)
+
+**Privacy Enforcement:**
+- All exports contain anonymized author hashes only
+- No original usernames ever written to export files
+- Export includes timestamp for data freshness tracking
+
+> **Policy Compliance:**
+> - Data API Terms §6: Upon project completion, we will delete all cached data[^7]
+> - Responsible Builder Policy: Researchers must *"not retain copies of data beyond what is strictly necessary"*[^6]
+
+---
+
+#### RATE LIMITING IMPLEMENTATION
+
+```javascript
+// Token bucket: 60 tokens, refill 1/second
+const rateLimiter = {
+  tokens: 60,
+  maxTokens: 60,
+  refillRate: 1, // per second
+  lastRefill: Date.now()
+};
+
+// Before each API call:
+await rateLimiter.consume(1);
 ```
-Original username: "PregnantMom2023"
-→ SHA-256 hash: "a7b3c9d2e5f8..." (truncated to 8 chars: "a7b3c9d2")
-→ Same user always gets same hash (consistency for analysis)
-→ Cannot reverse hash to find original username
+
+> **Policy Compliance:**
+> - Data API Terms §3.2: Prohibits *"circumvent or exceed limitations on calls and use of the Data APIs... or otherwise use the Data APIs in a manner that would constitute excessive or abusive usage"*[^10]
+> - Developer Terms §4.2: Prohibits *"circumvent or exceed reasonable limitations on calls and use of Reddit Services and Data"*[^9]
+
+---
+
+#### WHAT THIS TOOL DOES NOT DO
+
+| Action | Supported? | Policy Reference |
+|--------|------------|------------------|
+| Post content | ❌ NO | Responsible Builder Policy §Prohibited Bot Activities[^13] |
+| Comment on posts | ❌ NO | Responsible Builder Policy §Prohibited Bot Activities[^13] |
+| Vote on content | ❌ NO | Responsible Builder Policy §Prohibited Bot Activities[^13] |
+| Send messages | ❌ NO | Responsible Builder Policy §Bot Transparency[^21] |
+| Access private messages | ❌ NO | Only public data collected |
+| Train AI/ML models | ❌ NO | Developer Terms §4.2, Data API Terms §2.4, §3.2[^9][^3][^10] |
+| Commercial use | ❌ NO | Developer Terms §4.1[^12] |
+| Store original usernames | ❌ NO | Responsible Builder Policy §Privacy[^5] |
+| Circumvent rate limits | ❌ NO | Data API Terms §3.2[^10] |
+
+[^21]: Responsible Builder Policy, "Bots and Automated Activity > Bot Transparency"
+
+---
+
+## B8. What is missing from Devvit that prevents building on that platform?
+
+**Answer:**
+
+### Why Devvit Is Not Suitable for This Use Case
+
+Devvit is Reddit's platform for building **interactive Reddit applications** (bots, games, widgets). This research tool has fundamentally different requirements:
+
+| Requirement | Devvit | This Tool |
+|-------------|--------|-----------|
+| **Execution Location** | Reddit's infrastructure | Researcher's local machine |
+| **Purpose** | Interactive Reddit features | Offline data analysis |
+| **User Interaction** | Real-time with Redditors | None (read-only) |
+| **Data Export** | Limited | Full export to NVivo/Atlas.ti |
+| **IRB Compliance** | Not designed for research | Built for IRB requirements |
+| **Integration** | Reddit-only | Claude Desktop + external tools |
+
+**Specific Technical Reasons:**
+
+1. **IRB Requires Local Data Storage**
+   - IRB Protocol #28905 requires data to remain on researcher's institutional systems
+   - Devvit apps run on Reddit's infrastructure, not researcher machines
+   - Anonymization must occur before any storage; this requires local execution
+
+2. **Research Tool Integration**
+   - Researchers use NVivo, Atlas.ti, SPSS for qualitative and statistical analysis
+   - These tools require local file exports (CSV, JSON)
+   - Devvit is designed for in-Reddit experiences, not external tool integration
+
+3. **Claude Desktop MCP Protocol**
+   - Tool uses Model Context Protocol (MCP) for natural language research queries
+   - MCP servers run locally via stdio transport
+   - Not compatible with Devvit's architecture
+
+4. **No Reddit User Interaction**
+   - This tool never interacts with Reddit users
+   - No posts, comments, votes, or messages
+   - Devvit's value proposition (interactive apps) doesn't apply
+
+> **Policy Compliance:**
+> - Responsible Builder Policy, Developers Section: *"If your use case is not supported by Devvit, file a ticket here."*[^15]
+> - We are filing this ticket because Devvit does not support offline academic research tools
+
+---
+
+## B9. Provide a link to source code or platform that will access the API
+
+**Answer:** https://github.com/stharrold/erkinney-mcp
+
+### Repository Contents
+
+```
+mcp-bundle-reddit-research/
+├── index.js                    # MCP server entry point
+├── src/
+│   ├── auth.js                # Reddit OAuth 2.0 authentication
+│   ├── tools/                 # 5 MCP research tools
+│   │   ├── search.js          # search_reddit_threads
+│   │   ├── thread-details.js  # get_thread_details
+│   │   ├── batch-search.js    # batch_search_medications
+│   │   ├── export.js          # export_research_data
+│   │   └── subreddit-info.js  # get_subreddit_info
+│   ├── privacy/
+│   │   └── anonymize.js       # SHA-256 username hashing
+│   └── utils/
+│       ├── cache.js           # LRU caching (100 items)
+│       └── rate-limiter.js    # Token bucket (60 req/min)
+├── docs/
+│   └── CLAUDE_SETUP.md        # Setup instructions
+├── PRIVACY.md                  # Privacy documentation
+└── tests/
+    └── basic.test.js          # Jest test suite
 ```
 
-**What's NEVER collected:**
-- Private messages
-- User profiles or post history
-- Email addresses
-- Real names
-- Location data
-- Medical records or PHI
+**License:** MIT (open source, auditable)
+
+> **Policy Compliance:**
+> - Developer Terms §2.2: *"Reddit may monitor your use of Developer Services... and audit your App"*[^22]
+> - Our code is fully open source and available for audit
+> - Data API Terms §8.1: We will maintain confidentiality of any Reddit confidential information[^23]
+
+[^22]: Developer Terms, Section 2.2 "Audit Right"
+[^23]: Data API Terms, Section 8.1 "Confidentiality"
 
 ---
 
-### RATE LIMITING IMPLEMENTATION
+## B10. What subreddits do you intend to use the bot/app in?
 
-**Token bucket algorithm (60 requests/minute):**
-- Initial tokens: 60
-- Refill rate: 1 token/second
+**Answer:**
 
-**Example timeline:**
-```
-00:00 - Make 30 API calls (30 tokens consumed)
-00:30 - Wait, tokens refilling (now have 30 tokens)
-01:00 - Make 40 more calls (40 tokens consumed, 20 remain)
-01:20 - Wait, tokens refilling
-```
+| Subreddit | Subscribers | Research Relevance |
+|-----------|-------------|-------------------|
+| r/pregnant | ~235,000 | Primary pregnancy community |
+| r/babybumps | ~350,000 | Large pregnancy support community |
+| r/beyondthebump | ~275,000 | Postpartum discussions |
+| r/tryingforababy | ~130,000 | Pre-conception medication discussions |
 
-**If rate limit hit (429 error):**
-- Exponential backoff: wait 1s, 2s, 4s, 8s, 16s...
-- Automatic retry with increasing delays
+**Usage Pattern:** READ-ONLY data collection from public posts and comments. No posting, commenting, voting, or community interaction.
 
-**Caching to reduce calls:**
-- Same search repeated within 10 minutes → return cached results
-- Same thread requested within 5 minutes → return cached content
-- Reduces load on Reddit's infrastructure
+> **Policy Compliance:**
+> - Responsible Builder Policy, Bot Transparency: *"Bots should have a clearly specified purpose and scope of access, only accessing the subreddits and API actions they need and which are permitted."*[^21]
+> - We access only these four pregnancy-related subreddits relevant to our research questions
+> - No "discovery" or exploratory access to other subreddits
 
 ---
 
-### TYPICAL RESEARCH SESSION
+## B11. What username will you be operating this bot/app under?
 
-1. Researcher opens Claude Desktop
-2. Natural language query: "Search for ondansetron discussions in pregnant subreddits from 2021-2023"
-3. MCP server executes search (60 API calls over 1 minute)
-4. Returns 58 relevant threads
-5. Researcher: "Get full content for threads with >20 comments"
-6. MCP server retrieves 23 threads (23 API calls over 23 seconds)
-7. Researcher: "Export to CSV"
-8. MCP server generates anonymized CSV file locally
-9. Researcher imports to NVivo for qualitative analysis
+**Answer:** stharrold (developer account) or [institutional account to be created]
 
-**Total API calls:** 83 over ~2 minutes (well under rate limits)
+> **Policy Compliance:**
+> - Developer Terms §1.4: *"You will only access (or attempt to access) and use the Developer Services through... access controls that are authorized and made available to you by Reddit"*[^24]
+> - Developer Terms §1.4: *"You may not share your Access Info with any other third party without Reddit's permission"*[^24]
+> - API credentials will be stored securely in macOS Keychain, not in code
+
+[^24]: Developer Terms, Section 1.4 "Access Info"
 
 ---
 
-### ACADEMIC OUTPUT EXAMPLES
+## B12. Attachments
 
-**Research Questions:**
-- How do pregnant individuals describe medication side effects?
-- What role does peer support play in medication decisions?
-- How do discussions differ between medical professionals' advice and peer experiences?
+**Attachments to include with submission:**
 
-**Publications (with IRB approval):**
-- Journal articles: "Peer support in pregnancy medication decision-making: A Reddit discourse analysis"
-- Conference presentations: Data aggregated, no individual quotes identifiable
-- Theses: Tables showing themes, frequencies, patterns (not raw usernames)
+1. **IRB Approval Letter** - IRB_28905.pdf
+2. **Privacy Policy Documentation** - mcp-bundle-reddit-research/PRIVACY.md
+3. **This Compliance Document** - reddit-answers.md
 
 ---
 
-### TECHNICAL SPECIFICATIONS
+# Appendix: Policy Compliance Matrix
 
-- **Programming language:** Node.js (JavaScript)
-- **Reddit API library:** snoowrap v1.23.0
-- **Authentication:** OAuth 2.0 password grant (script app type)
-- **Deployment:** Local execution via Claude Desktop MCP protocol
-- **Data storage:** Local filesystem only (not cloud)
-- **Anonymization:** crypto.createHash('sha256') with unique salt per study
-
-**Research Contact:** Dr. Emily Kinney, Indiana University, School of Medicine (emkinney@iu.edu)
-**Developer Contact:** Samuel Harrold (samuel.harrold@gmail.com)
-
-**Repository:** https://github.com/stharrold/erkinney-mcp
-
----
-
-## Question 3: What is missing from Devvit that prevents building on that platform?
-
-This is a research data collection tool, not an interactive Reddit application, so Devvit is not applicable.
-
-### REASONS DEVVIT DOESN'T FIT THIS USE CASE:
-
-#### 1. WRONG PLATFORM PURPOSE
-- Devvit is for building interactive Reddit apps (bots, games, widgets)
-- This tool performs offline academic research data collection
-- No user-facing features, posts, or interactions needed
-
-#### 2. ARCHITECTURE MISMATCH
-- This tool runs locally on researchers' machines via Claude Desktop MCP extension
-- Devvit apps run on Reddit's infrastructure
-- Need local execution to maintain data privacy and researcher control
-
-#### 3. DATA EXPORT REQUIREMENTS
-- Research requires exporting data to CSV/JSON for analysis in NVivo/Atlas.ti
-- Devvit apps are designed for in-Reddit experiences, not data export
-- Need direct API access for systematic data collection
-
-#### 4. PRIVACY & IRB COMPLIANCE
-- Institutional Review Board (IRB) protocols require local data storage on researcher's machine
-- Cannot use cloud-hosted infrastructure for sensitive research data
-- Researchers must control anonymization and data retention
-
-#### 5. MULTI-PLATFORM INTEGRATION
-- Tool integrates with Claude Desktop for AI-assisted analysis
-- Connects to external research tools (NVivo, Atlas.ti, SPSS)
-- Devvit is limited to Reddit ecosystem
-
-**Summary:** This is fundamentally a research tool (like a web scraper or API client), not a Reddit application. Devvit would be appropriate if we were building something users interact with on Reddit, but this tool is for academic researchers analyzing public data offline.
+| Policy Requirement | Section | Our Implementation | Status |
+|-------------------|---------|-------------------|--------|
+| Approval required before API access | Responsible Builder Policy, Introduction | Submitting this formal request | ✅ |
+| Be transparent | Responsible Builder Policy, Introduction | Full disclosure of purpose, open source code | ✅ |
+| Respect rate limits | Responsible Builder Policy, Introduction | 60 req/min token bucket + backoff | ✅ |
+| No AI/ML training | Responsible Builder Policy, Prohibited Practices | Qualitative analysis only, no model training | ✅ |
+| No re-identification | Responsible Builder Policy, Privacy | SHA-256 anonymization, no off-platform matching | ✅ |
+| Non-commercial use | Responsible Builder Policy, Researchers | Academic research only, NIH-funded | ✅ |
+| Data retention limits | Responsible Builder Policy, Researchers | Delete upon project completion | ✅ |
+| Re-run queries for freshness | Responsible Builder Policy, Researchers | Real-time API queries, no static database | ✅ |
+| Comply with Data API Terms | Developer Terms §2.4 | Reviewed and compliant | ✅ |
+| App Review cooperation | Developer Terms §3.1 | Will cooperate fully | ✅ |
+| User Content attribution | Developer Terms §5.2 | Links back to Reddit, anonymized author | ✅ |
+| Privacy policy | Developer Terms §7.2 | PRIVACY.md in repository | ✅ |
+| Security measures | Developer Terms §7.4 | Keychain storage, local execution only | ✅ |
+| Delete data on termination | Data API Terms §6 | Will delete all cached data | ✅ |
 
 ---
 
-## Question 4: Provide a link to source code or platform that will access the API
+# Appendix: Attachments
 
-**Repository:** https://github.com/stharrold/erkinney-mcp
+The following documents are available for review:
 
-**Description:** Public GitHub repository containing the complete MCP bundle implementation with:
-- All source code (Node.js with ES modules)
-- Privacy/anonymization implementation
-- Rate limiting and caching logic
-- Documentation (README, PRIVACY.md, KEYCHAIN.md)
-- Test suite (Jest)
-- Setup scripts for researchers
+1. **IRB Approval** - `IRB_28905.pdf`
+   - Protocol #28905, Exempt Category 4(i)
+   - Indiana University IRB
+   - Approved October 31, 2025
 
-**License:** MIT License (open source)
+2. **Source Code** - https://github.com/stharrold/erkinney-mcp
+   - Complete implementation
+   - MIT License (open source)
+   - Includes test suite
 
-**Key Files:**
-- `index.js` - MCP server entry point
-- `src/tools/` - 5 MCP research tools
-- `src/privacy/anonymize.js` - SHA-256 anonymization
-- `src/utils/rate-limiter.js` - Token bucket rate limiting
-- `src/utils/cache.js` - LRU caching implementation
+3. **Privacy Documentation** - `mcp-bundle-reddit-research/PRIVACY.md`
+   - SHA-256 anonymization details
+   - Data handling procedures
+   - Retention policy
 
----
-
-## Question 5: What subreddits do you intend to use the bot/app in?
-
-**Target Subreddits:**
-- `r/pregnant`
-- `r/babybumps`
-- `r/beyondthebump`
-- `r/tryingforababy`
-
-**Rationale:** These are the primary communities where pregnant individuals and those trying to conceive discuss pregnancy-related health topics, including medication use, side effects, and decision-making. They represent active, supportive communities with substantial discussion of pregnancy medication experiences.
-
-**Usage Pattern:** Read-only data collection from public posts and comments. No posting, commenting, voting, or community interaction.
+4. **Technical Documentation**
+   - `mcp-bundle-reddit-research/README.md` - Setup and usage
+   - `mcp-bundle-reddit-research/docs/CLAUDE_SETUP.md` - Claude Desktop integration
 
 ---
 
-## Question 6: If applicable, what username will you be operating this bot/app under?
+# Footnotes
 
-**Username:** `stharrold`
+<!-- Footnotes are rendered inline above; this section for reference -->
 
-**Note:** This is a personal script app (not a bot account) that runs locally on the developer's machine for research prototyping. The tool performs read-only API calls and does not post, comment, or interact with Reddit content in any way.
+**Responsible Builder Policy** (Updated 10 days ago as of Nov 21, 2025)
+- URL: https://support.reddithelp.com/hc/en-us/articles/42728983564564-Responsible-Builder-Policy
 
-Once the research study receives IRB approval, individual researchers will each use their own Reddit accounts with their own script apps (following the distributed architecture described in Question 3). This is the recommended approach for academic research tools where each researcher maintains independent credentials and rate limits.
+**Developer Terms** (Effective September 24, 2024)
+- URL: https://redditinc.com/policies/developer-terms
+
+**Data API Terms** (Effective June 19, 2023)
+- URL: https://redditinc.com/policies/data-api-terms
+
+---
+
+*Document prepared for Reddit API Access Request*
+*Research Contact: Emily Kinney, emkinney@iu.edu*
+*Developer Contact: Samuel Harrold, samuel.harrold@gmail.com*
+*Repository: https://github.com/stharrold/erkinney-mcp*
