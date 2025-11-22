@@ -19,7 +19,7 @@ description: |
 The **initialize-repository** meta-skill is a Phase 0 (bootstrapping) tool that replicates the complete workflow system from a source repository to a new target repository. It provides an interactive Q&A system to configure what components get copied and how they're adapted for the new context.
 
 **Key capabilities:**
-- Copy all 8 workflow skills from source to target
+- Copy all 9 workflow skills from source to target
 - Adapt documentation for new repository context
 - Generate customized README.md, CLAUDE.md, pyproject.toml
 - Optionally copy domain-specific content, tests, containers
@@ -463,7 +463,7 @@ These files are **customized** for the new repository:
 
 After running the script, the target repository will have:
 
-**8 workflow skills:**
+**9 workflow skills:**
 - All SKILL.md, CLAUDE.md, README.md, CHANGELOG.md files
 - All Python scripts and templates
 - All ARCHIVED/ directories with documentation

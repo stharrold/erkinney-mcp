@@ -32,7 +32,7 @@ python .claude/skills/initialize-repository/scripts/initialize_repository.py \
 
 1. **Validates** source repository has workflow system
 2. **Asks questions** about target repository (purpose, tech stack, components)
-3. **Copies** 8 workflow skills to target repository
+3. **Copies** 9 workflow skills to target repository
 4. **Adapts** documentation (README.md, CLAUDE.md, pyproject.toml)
 5. **Creates** compliant directory structure (ARCHIVED/, planning/, specs/)
 6. **Initializes git** with 3-branch structure (optional)
@@ -42,7 +42,7 @@ python .claude/skills/initialize-repository/scripts/initialize_repository.py \
 ## Components Copied
 
 **Always copied:**
-- 8 workflow skills (.claude/skills/)
+- 9 workflow skills (.claude/skills/)
 - Workflow documentation (WORKFLOW.md, CONTRIBUTING.md)
 - Quality configurations (pyproject.toml, .gitignore)
 - Adapted repository documentation (README.md, CLAUDE.md)
