@@ -15,7 +15,7 @@ next: /workflow
 
 **Outputs**: `tasks.md` with numbered tasks (T001, T002, etc.)
 
-**Next**: Manually implement tasks, then run `/workflow` to create PR
+**Next**: Manually implement tasks, then run `/workflow` to create a PR
 
 ---
 
