@@ -37,7 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial release of initialize-repository meta-skill (Phase 0)
 - Interactive Q&A system (4 phases, 13-14 questions)
-- Copies all 9 workflow skills from source to target repository
+- Copies all 8 workflow skills from source to target repository
 - Adapts documentation for new repository context
 - Generates README.md, CLAUDE.md, pyproject.toml for target repo
 - Creates compliant directory structure (ARCHIVED/, planning/, specs/)

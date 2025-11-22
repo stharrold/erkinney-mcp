@@ -775,7 +775,7 @@ Push to remote?
 === Phase 3: File Operations ===
 
 ✓ Created target directory
-✓ Copied 9 workflow skills
+✓ Copied 8 workflow skills
 ✓ Copied documentation (WORKFLOW.md, CONTRIBUTING.md)
 ✓ Generated README.md
 ✓ Generated CLAUDE.md
@@ -812,7 +812,7 @@ Push to remote?
 Repository initialized successfully!
 
 Created:
-  - 9 workflow skills (.claude/skills/)
+  - 8 workflow skills (.claude/skills/)
   - Documentation (WORKFLOW.md, CONTRIBUTING.md, README.md, CLAUDE.md)
   - Configuration (pyproject.toml, .gitignore, CHANGELOG.md, TODO.md)
   - Directory structure (ARCHIVED/, planning/, specs/)
