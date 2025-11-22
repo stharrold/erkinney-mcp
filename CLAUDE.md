@@ -16,19 +16,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### MCP Bundle (`mcp-bundle-reddit-research/`)
 
 ```bash
-cd mcp-bundle-reddit-research
-npm install                    # Install dependencies
-npm test                       # Run all tests
-npm run test:coverage          # Coverage report
-npm run lint                   # ESLint
+# From repo root (Node.js >=18 required)
+npm --prefix mcp-bundle-reddit-research install
+npm --prefix mcp-bundle-reddit-research test
+npm --prefix mcp-bundle-reddit-research run test:watch    # Watch mode
+npm --prefix mcp-bundle-reddit-research run test:coverage
+npm --prefix mcp-bundle-reddit-research run lint
+npm --prefix mcp-bundle-reddit-research start             # Run MCP server
 
-# Run single test
+# Run single test (from mcp-bundle-reddit-research/)
 node --experimental-vm-modules node_modules/jest/bin/jest.js tests/basic.test.js
 
 # Keychain credentials (macOS)
-npm run keychain:setup         # Store Reddit credentials securely
-npm run keychain:test          # Verify keychain access
-npm run start:keychain         # Start with keychain credentials
+npm --prefix mcp-bundle-reddit-research run keychain:setup
+npm --prefix mcp-bundle-reddit-research run start:keychain
 ```
 
 ### Workflow Skills (`.claude/skills/`)
