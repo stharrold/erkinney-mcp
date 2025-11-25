@@ -2,7 +2,7 @@
 title: Reddit API Application - Comprehensive Submission
 version: 2.0.0
 date_created: 2025-11-21
-date_updated: 2025-11-22
+date_updated: 2025-11-25
 status: ready_for_submission
 prior_submission:
   request_id: 15987717
@@ -104,9 +104,9 @@ The prior submission was denied with the following reason:
 
 ## A4. Reddit account name
 
-**Answer:** [To be created by Dr. Kinney with @iu.edu email verification]
+**Answer:** The_MPRINT_Hub
 
-> **Note:** A new Reddit account should be created by Dr. Kinney using her institutional email to maintain consistency between the API request submitter and the Reddit account holder.
+> **Note:** This account is associated with the MPRINT Center (Maternal & Pediatric Precision in Therapeutics) at Indiana University, maintaining consistency between the research team and the API request.
 
 ---
 
@@ -359,7 +359,7 @@ This research follows the Association of Internet Researchers (AoIR) Ethics Guid
 
 ## B5. Reddit account name
 
-**Answer:** stharrold (developer) or [new account to be created by Dr. Kinney]
+**Answer:** The_MPRINT_Hub
 
 > **Policy Compliance:**
 > - Responsible Builder Policy, Introduction: *"You must not misrepresent or mask how or why you are accessing Reddit data. This prohibits registering multiple accounts or submitting multiple requests for the same use case."*[^16]
@@ -682,7 +682,7 @@ mcp-bundle-reddit-research/
 
 ## B11. What username will you be operating this bot/app under?
 
-**Answer:** stharrold (developer account) or [institutional account to be created]
+**Answer:** The_MPRINT_Hub
 
 > **Policy Compliance:**
 > - Developer Terms §1.4: *"You will only access (or attempt to access) and use the Developer Services through... access controls that are authorized and made available to you by Reddit"*[^24]
