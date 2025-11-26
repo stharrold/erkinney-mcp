@@ -280,7 +280,7 @@
                 color: var(--mprint-blue);
             }
 
-            /* Hide all href displays in print - cleaner output */
+            /* Remove all link ::after pseudo-elements in print, including browser's default URL display after links */
             a::after {
                 content: none !important;
             }
@@ -334,7 +334,7 @@
     <div class="letter-info">
         <p><strong>Date:</strong> November 25, 2025</p>
         <p><strong>To:</strong> Reddit Data API Team</p>
-        <p><strong>From:</strong> Emily Kinney, PhD, Research Staff | Indiana University School of Medicine | emkinney@iu.edu</p>
+        <p><strong>From:</strong> Emily Kinney, PhD (Research Staff) | Indiana University School of Medicine | emkinney@iu.edu</p>
         <p><strong>Re:</strong> Revised API Access Request (Prior Request #15987717)</p>
     </div>
 

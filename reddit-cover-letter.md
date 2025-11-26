@@ -14,7 +14,7 @@ prior_request_result: DENIED
 
 **To:** Reddit Data API Team
 
-**From:** Emily Kinney, PhD, Research Staff
+**From:** Emily Kinney, PhD (Research Staff)
 Indiana University School of Medicine
 emkinney@iu.edu
 
@@ -267,7 +267,7 @@ We commit to:
 | API Access Request | This Submission |
 | Data Collection | Pending Approval |
 
-**Single-line summary:** Tool complete, IRB approved (Protocol #28905, Oct 2025), NIH-funded (MPRINT P30HD106451); awaiting API approval for 6-month data collection; revised submission addressing Request #15987717.
+**Single-line summary:** Tool complete. IRB approved (Protocol #28905, Oct 2025). NIH-funded (MPRINT P30HD106451). Awaiting API approval for 6-month data collection. Revised submission addressing Request #15987717.
 
 ---
 
