@@ -140,3 +140,5 @@ vite.config.ts.timestamp-*
 
 # Research documents (not for version control)
 *.pdf
+!reddit-cover-letter.pdf
+!IRB_28905.pdf

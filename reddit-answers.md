@@ -2,8 +2,8 @@
 title: Reddit API Application - Comprehensive Submission
 version: 2.0.0
 date_created: 2025-11-21
-date_updated: 2025-11-21
-status: draft
+date_updated: 2025-11-25
+status: ready_for_submission
 prior_submission:
   request_id: 15987717
   date: 2025-11-21
@@ -27,10 +27,41 @@ This document provides answers to ALL questions from BOTH Reddit API request for
 
 ## Table of Contents
 
-1. [Part A: Researcher Form Questions](#part-a-researcher-form-questions)
-2. [Part B: Developer Form Questions](#part-b-developer-form-questions)
-3. [Appendix: Policy Compliance Matrix](#appendix-policy-compliance-matrix)
-4. [Appendix: Attachments](#appendix-attachments)
+1. [Prior Submission & Revision Note](#prior-submission--revision-note)
+2. [Part A: Researcher Form Questions](#part-a-researcher-form-questions)
+3. [Part B: Developer Form Questions](#part-b-developer-form-questions)
+4. [Appendix: Policy Compliance Matrix](#appendix-policy-compliance-matrix)
+5. [Appendix: Attachments](#appendix-attachments)
+
+---
+
+# Prior Submission & Revision Note
+
+> **This is a revised submission addressing Request #15987717, which was denied on November 21, 2025.**
+
+## Denial Reason Received
+
+The prior submission was denied with the following reason:
+
+> *"Your submission is not in compliance with Reddit's Responsible Builder Policy and/or lacks necessary details."*
+
+## How This Revised Submission Addresses the Denial
+
+| Issue Identified | Resolution in This Submission |
+|------------------|------------------------------|
+| **Compliance with Responsible Builder Policy** | Every answer now includes explicit footnote references to specific sections of the Responsible Builder Policy, Developer Terms, and Data API Terms (24 policy citations total) |
+| **Lacking necessary details** | This document provides comprehensive technical specifications, including API endpoints, data handling procedures, rate limiting implementation, and anonymization methods |
+| **Submitter identity** | Now submitted by Research Staff (emkinney@iu.edu) with institutional affiliation, rather than developer's personal email |
+| **Research context** | Full IRB documentation (Protocol #28905, Exempt Category 4(i)), NIH funding details, and AoIR Ethics 3.0 compliance explicitly stated |
+| **Technical transparency** | Open-source repository (https://github.com/stharrold/erkinney-mcp) with complete implementation available for audit |
+
+## Key Compliance Improvements
+
+1. **24 explicit policy citations** - Each answer references specific policy sections by name and paragraph
+2. **Policy Compliance Matrix** - Appendix maps all policy requirements to our implementation
+3. **READ-ONLY commitment** - Explicit documentation that tool has no posting, commenting, voting, or messaging capabilities
+4. **No AI/ML training** - Multiple citations confirming compliance with AI training prohibitions
+5. **Privacy-by-design** - SHA-256 anonymization implemented before any data storage
 
 ---
 
@@ -73,9 +104,9 @@ This document provides answers to ALL questions from BOTH Reddit API request for
 
 ## A4. Reddit account name
 
-**Answer:** [To be created by Dr. Kinney with @iu.edu email verification]
+**Answer:** The_MPRINT_Hub
 
-> **Note:** A new Reddit account should be created by Dr. Kinney using her institutional email to maintain consistency between the API request submitter and the Reddit account holder.
+> **Note:** This account is associated with the MPRINT Center (Maternal & Pediatric Precision in Therapeutics) at Indiana University, maintaining consistency between the research team and the API request.
 
 ---
 
@@ -328,7 +359,7 @@ This research follows the Association of Internet Researchers (AoIR) Ethics Guid
 
 ## B5. Reddit account name
 
-**Answer:** stharrold (developer) or [new account to be created by Dr. Kinney]
+**Answer:** The_MPRINT_Hub
 
 > **Policy Compliance:**
 > - Responsible Builder Policy, Introduction: *"You must not misrepresent or mask how or why you are accessing Reddit data. This prohibits registering multiple accounts or submitting multiple requests for the same use case."*[^16]
@@ -651,7 +682,7 @@ mcp-bundle-reddit-research/
 
 ## B11. What username will you be operating this bot/app under?
 
-**Answer:** stharrold (developer account) or [institutional account to be created]
+**Answer:** The_MPRINT_Hub
 
 > **Policy Compliance:**
 > - Developer Terms §1.4: *"You will only access (or attempt to access) and use the Developer Services through... access controls that are authorized and made available to you by Reddit"*[^24]
