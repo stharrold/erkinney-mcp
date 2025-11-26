@@ -77,6 +77,8 @@ jobs:
       - name: Test mcp-bundle-reddit-research
         if: hashFiles('mcp-bundle-reddit-research/package.json') != ''
         working-directory: ./mcp-bundle-reddit-research
+        env:
+          ANONYMIZATION_SALT: test-salt-for-ci-only
         run: |
           npm ci
           npm test
