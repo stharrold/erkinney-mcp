@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit API Access Request - Cover Letter</title>
+    <style>
+        :root {
+            --iu-crimson: #990000;
+            --iu-cream: #F7F3E8;
+            --mprint-blue: #1E3A5F;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --border-color: #E0E0E0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #FFFFFF;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        /* Header with logos */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--iu-crimson);
+            margin-bottom: 30px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-container img {
+            height: 60px;
+            width: auto;
+        }
+
+        .mprint-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .mprint-logo img {
+            height: 50px;
+        }
+
+        .mprint-text {
+            font-size: 12px;
+            color: var(--mprint-blue);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Document title */
+        .document-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .document-title h1 {
+            color: var(--mprint-blue);
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .document-title .subtitle {
+            color: var(--iu-crimson);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Letter header info */
+        .letter-info {
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: var(--iu-cream);
+            border-radius: 5px;
+        }
+
+        .letter-info p {
+            margin-bottom: 5px;
+        }
+
+        .letter-info strong {
+            color: var(--mprint-blue);
+        }
+
+        /* Section styling */
+        h2 {
+            color: var(--iu-crimson);
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        h3 {
+            color: var(--mprint-blue);
+            font-size: 16px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: var(--mprint-blue);
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        tr:nth-child(even) {
+            background-color: #F9F9F9;
+        }
+
+        tr:hover {
+            background-color: var(--iu-cream);
+        }
+
+        /* Status badges */
+        .status-compliant {
+            background-color: #28A745;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+
+        /* Blockquotes for policy citations */
+        blockquote {
+            margin: 15px 0;
+            padding: 15px;
+            background-color: #F5F5F5;
+            border-left: 4px solid var(--iu-crimson);
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        /* Lists */
+        ul, ol {
+            margin: 10px 0 10px 25px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        /* Footnotes */
+        .footnotes {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid var(--border-color);
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .footnotes h2 {
+            font-size: 16px;
+        }
+
+        .footnote {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            text-indent: -30px;
+        }
+
+        .footnote-ref {
+            color: var(--iu-crimson);
+            font-weight: bold;
+        }
+
+        /* Links */
+        a {
+            color: var(--mprint-blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Alert box */
+        .alert {
+            background-color: #FFF3CD;
+            border: 1px solid #FFECB5;
+            border-left: 4px solid #FFC107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .alert-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 5px;
+        }
+
+        /* Executive summary box */
+        .executive-summary {
+            background-color: var(--iu-cream);
+            border: 1px solid var(--iu-crimson);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .executive-summary h2 {
+            margin-top: 0;
+            border-bottom: none;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 3px solid var(--iu-crimson);
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .footer-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 15px;
+        }
+
+        .footer-logos img {
+            height: 40px;
+            opacity: 0.8;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                padding: 20px;
+            }
+
+            .header, .footer {
+                position: static;
+            }
+
+            a {
+                color: var(--mprint-blue);
+            }
+
+            /* Remove all link ::after pseudo-elements in print, including browser's default URL display after links */
+            a::after {
+                content: none !important;
+            }
+        }
+
+        /* Code/technical text */
+        code {
+            background-color: #F4F4F4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 13px;
+        }
+
+        /* Sup for footnote references */
+        sup {
+            font-size: 10px;
+            color: var(--iu-crimson);
+        }
+
+        sup a {
+            color: var(--iu-crimson);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logos -->
+    <header class="header">
+        <div class="logo-container">
+            <a href="https://medicine.iu.edu/" target="_blank">
+                <img src="https://assets.iu.edu/brand/3.3.x/trident-large.png" alt="Indiana University" style="height: 60px;">
+            </a>
+            <a href="https://www.mprint.org/" target="_blank">
+                <img src="https://static.wixstatic.com/media/83d0b5_5ad954ab68ac49c28070a7b19f503fc8~mv2.png/v1/fill/w_478,h_130,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/MPRINT%20logo_RGB-h-small-graphic-color.png" alt="MPRINT Center" style="height: 50px;">
+            </a>
+        </div>
+        <div class="logo-container">
+            <a href="https://www.nih.gov/" target="_blank">
+                <img src="https://www.ncbi.nlm.nih.gov/core/assets/style-guide/img/nih-logo.png" alt="National Institutes of Health" style="height: 50px;">
+            </a>
+        </div>
+    </header>
+
+    <!-- Document Title -->
+    <div class="document-title">
+        <h1>Reddit API Access Request</h1>
+        <div class="subtitle">Cover Letter - Revised Submission</div>
+    </div>
+
+    <!-- Letter Info -->
+    <div class="letter-info">
+        <p><strong>Date:</strong> November 25, 2025</p>
+        <p><strong>To:</strong> Reddit Data API Team</p>
+        <p><strong>From:</strong> Emily Kinney, PhD (Research Staff) | Indiana University School of Medicine | emkinney@iu.edu</p>
+        <p><strong>Re:</strong> Revised API Access Request (Prior Request #15987717)</p>
+    </div>
+
+    <!-- Executive Summary -->
+    <div class="executive-summary">
+        <h2>Executive Summary</h2>
+        <p>This is a <strong>revised submission</strong> addressing Request #15987717, which was denied on November 21, 2025 with the reason:</p>
+        <blockquote>"Your submission is not in compliance with Reddit's Responsible Builder Policy and/or lacks necessary details."</blockquote>
+        <p>This cover letter provides comprehensive documentation of our compliance with Reddit's Responsible Builder Policy<sup><a href="#fn16">[16]</a></sup>, Developer Terms<sup><a href="#fn14">[14]</a></sup>, and Data API Terms<sup><a href="#fn3">[3]</a></sup>, with <strong>24 explicit policy citations</strong> demonstrating full alignment with Reddit's requirements.</p>
+    </div>
+
+    <!-- Applicant Information -->
+    <h2>Applicant Information</h2>
+    <table>
+        <tr><th>Field</th><th>Value</th></tr>
+        <tr><td><strong>Email</strong></td><td>emkinney@iu.edu<sup><a href="#fn1">[1]</a></sup></td></tr>
+        <tr><td><strong>Role</strong></td><td>Academic Researcher<sup><a href="#fn2">[2]</a></sup></td></tr>
+        <tr><td><strong>Reddit Account</strong></td><td>The_MPRINT_Hub</td></tr>
+        <tr><td><strong>Institution</strong></td><td>Indiana University School of Medicine</td></tr>
+        <tr><td><strong>Country</strong></td><td>United States</td></tr>
+    </table>
+
+    <!-- DETAILED RESEARCH PROPOSAL -->
+    <div style="background-color: #F0F4F8; border: 2px solid var(--mprint-blue); padding: 20px; margin: 20px 0; border-radius: 8px;">
+        <h2 style="color: var(--mprint-blue); margin-top: 0; border-bottom: 2px solid var(--mprint-blue);">Detailed Research Proposal</h2>
+        <p style="font-style: italic; color: var(--text-light);">This section addresses the Reddit form requirement: "Submit a detailed proposal outlining your research purpose, specific data requirements, and ethical considerations."</p>
+    </div>
+
+    <!-- 1. RESEARCH PURPOSE -->
+    <h2>1. Research Purpose</h2>
+
+    <h3>Study Overview</h3>
+    <p>This study examines how pregnant individuals discuss medication use, side effects, and healthcare provider interactions on Reddit pregnancy communities. The research is conducted under IRB Protocol #28905 at Indiana University and contributes to NIH-funded research on pregnancy medication safety through the MPRINT Center (NICHD P30HD106451).<sup><a href="#fn2">[2]</a></sup></p>
+
+    <h3>Research Aims</h3>
+    <ol>
+        <li><strong>Understand medication information-seeking behavior</strong> in online pregnancy communities</li>
+        <li><strong>Identify gaps in healthcare communication</strong> that could improve patient education</li>
+        <li><strong>Analyze peer support patterns</strong> in pregnancy health discussions</li>
+        <li><strong>Contribute to NIH-funded research</strong> on pregnancy medication safety</li>
+    </ol>
+
+    <h3>Significance</h3>
+    <p>Pregnant individuals often turn to online communities for medication information due to limited clinical trial data for this population. Understanding these discussions can help healthcare providers better address patient concerns and improve maternal-fetal health outcomes. This research is <strong>non-commercial</strong> and intended solely for peer-reviewed academic publication.<sup><a href="#fn2">[2]</a></sup><sup><a href="#fn12">[12]</a></sup></p>
+
+    <h3>Target Communities</h3>
+    <table>
+        <tr><th>Subreddit</th><th>Subscribers</th><th>Research Relevance</th></tr>
+        <tr><td>r/pregnant</td><td>~235,000</td><td>Primary pregnancy community</td></tr>
+        <tr><td>r/babybumps</td><td>~350,000</td><td>Large pregnancy support community</td></tr>
+        <tr><td>r/beyondthebump</td><td>~275,000</td><td>Postpartum medication discussions</td></tr>
+        <tr><td>r/tryingforababy</td><td>~130,000</td><td>Pre-conception medication discussions</td></tr>
+    </table>
+
+    <!-- 2. SPECIFIC DATA REQUIREMENTS -->
+    <h2>2. Specific Data Requirements</h2>
+
+    <h3>Data Elements Collected</h3>
+    <table>
+        <tr><th>Element</th><th>Purpose</th><th>Retention</th></tr>
+        <tr><td>Post titles</td><td>Identify medication discussions</td><td>Study duration only</td></tr>
+        <tr><td>Post bodies</td><td>Qualitative content analysis</td><td>Study duration only</td></tr>
+        <tr><td>Comment text</td><td>Understand peer responses</td><td>Study duration only</td></tr>
+        <tr><td>Timestamps</td><td>Temporal analysis</td><td>Study duration only</td></tr>
+        <tr><td>Subreddit name</td><td>Community context</td><td>Study duration only</td></tr>
+        <tr><td>Vote counts</td><td>Community engagement metrics</td><td>Study duration only</td></tr>
+    </table>
+    <p style="font-size: 13px; color: var(--text-light);">All data is accessed via Reddit Data API and processed in compliance with Data API Terms §2.4.<sup><a href="#fn3">[3]</a></sup></p>
+
+    <h3>Data Elements NOT Collected</h3>
+    <table>
+        <tr><th>Element</th><th>Reason</th></tr>
+        <tr><td>Usernames</td><td>Immediately anonymized via SHA-256 hash<sup><a href="#fn4">[4]</a></sup></td></tr>
+        <tr><td>User profiles</td><td>Not relevant to research questions</td></tr>
+        <tr><td>Post history</td><td>Privacy protection<sup><a href="#fn5">[5]</a></sup></td></tr>
+        <tr><td>Private messages</td><td>Public data only</td></tr>
+        <tr><td>Email addresses</td><td>Not accessible, not needed</td></tr>
+        <tr><td>Real names</td><td>Not accessible, not needed</td></tr>
+        <tr><td>Location data</td><td>Privacy protection</td></tr>
+        <tr><td>Protected Health Information (PHI)</td><td>Not collected or inferred</td></tr>
+    </table>
+
+    <h3>Technical Implementation</h3>
+    <p><strong>API Access:</strong> READ-ONLY via Reddit Data API (OAuth scope: <code>read</code> only)<sup><a href="#fn11">[11]</a></sup></p>
+    <p><strong>Rate Limiting:</strong> Token bucket algorithm, 60 requests/minute maximum<sup><a href="#fn17">[17]</a></sup></p>
+    <p><strong>Caching:</strong> LRU cache (100 items) to reduce redundant API calls<sup><a href="#fn18">[18]</a></sup></p>
+    <p><strong>Repository:</strong> <a href="https://github.com/stharrold/erkinney-mcp" target="_blank">https://github.com/stharrold/erkinney-mcp</a> (Apache License 2.0, open for audit)<sup><a href="#fn22">[22]</a></sup></p>
+
+    <!-- 3. ETHICAL CONSIDERATIONS -->
+    <h2>3. Ethical Considerations</h2>
+
+    <h3>IRB Approval</h3>
+    <table>
+        <tr><th>Field</th><th>Value</th></tr>
+        <tr><td><strong>Protocol Number</strong></td><td>28905</td></tr>
+        <tr><td><strong>Status</strong></td><td>Exempt (Category 4(i) - publicly available information)</td></tr>
+        <tr><td><strong>Approval Date</strong></td><td>October 31, 2025</td></tr>
+        <tr><td><strong>Institution</strong></td><td>Indiana University IRB</td></tr>
+        <tr><td><strong>Principal Investigator</strong></td><td>Sara Quinney, PhD (squinney@iu.edu)</td></tr>
+        <tr><td><strong>Research Staff</strong></td><td>Emily Kinney, PhD (emkinney@iu.edu)</td></tr>
+    </table>
+
+    <h3>AoIR Ethics 3.0 Compliance</h3>
+    <p>This research follows the Association of Internet Researchers (AoIR) Ethics Guidelines 3.0:</p>
+    <ul>
+        <li><strong>Public data only</strong> - No expectation of privacy in public posts</li>
+        <li><strong>No direct contact</strong> - No interaction with or deception of Reddit users</li>
+        <li><strong>Anonymization</strong> - All user identifiers hashed before analysis<sup><a href="#fn4">[4]</a></sup></li>
+        <li><strong>Aggregated findings</strong> - No individual quotes without additional ethical review</li>
+        <li><strong>Transparent methodology</strong> - Open-source code for reproducibility</li>
+    </ul>
+
+    <h3>Privacy-by-Design Implementation</h3>
+    <div class="alert">
+        <div class="alert-title">Zero Tolerance for Privacy Violations</div>
+        <p>In compliance with Reddit's Responsible Builder Policy<sup><a href="#fn5">[5]</a></sup>:</p>
+        <ul>
+            <li>SHA-256 username hashing with study-specific salt (irreversible)</li>
+            <li>No processing to infer sensitive characteristics (health, political affiliation, etc.)</li>
+            <li>No re-identification or de-anonymization attempts</li>
+            <li>No matching with off-platform identifiers</li>
+        </ul>
+    </div>
+
+    <h3>Data Handling and Retention</h3>
+    <p>In compliance with Responsible Builder Policy data handling requirements<sup><a href="#fn6">[6]</a></sup>:</p>
+    <ul>
+        <li>Data retained only for duration of active research project</li>
+        <li>Re-query API for each analysis session (no static database)</li>
+        <li>Respect data removals and deletions</li>
+        <li>Delete all cached data upon project termination<sup><a href="#fn7">[7]</a></sup></li>
+    </ul>
+
+    <h3>No AI/ML Training</h3>
+    <div class="alert">
+        <div class="alert-title">Explicit Compliance Statement</div>
+        <p>This research tool performs <strong>qualitative content analysis only</strong>. No machine learning models will be trained on Reddit data. The Claude Desktop integration is for <strong>query assistance only</strong> (helping researchers formulate searches), NOT for training AI on Reddit content.</p>
+        <p>Compliance with:</p>
+        <ul>
+            <li>Responsible Builder Policy: No Unapproved AI Training<sup><a href="#fn8">[8]</a></sup></li>
+            <li>Developer Terms §4.2<sup><a href="#fn9">[9]</a></sup></li>
+            <li>Data API Terms §2.4 and §3.2<sup><a href="#fn3">[3]</a></sup><sup><a href="#fn10">[10]</a></sup></li>
+        </ul>
+    </div>
+
+    <h3>READ-ONLY Commitment</h3>
+    <p>Our tool has <strong>no capability</strong> to:<sup><a href="#fn13">[13]</a></sup></p>
+    <table>
+        <tr><th>Action</th><th>Capability</th></tr>
+        <tr><td>Post content</td><td>NOT implemented</td></tr>
+        <tr><td>Comment on posts</td><td>NOT implemented</td></tr>
+        <tr><td>Vote on content</td><td>NOT implemented</td></tr>
+        <tr><td>Send messages</td><td>NOT implemented</td></tr>
+        <tr><td>Access private messages</td><td>NOT implemented</td></tr>
+    </table>
+
+    <!-- How This Submission Addresses the Prior Denial -->
+    <h2>How This Submission Addresses the Prior Denial</h2>
+    <table>
+        <tr><th>Issue</th><th>Resolution</th></tr>
+        <tr><td><strong>Policy Compliance</strong></td><td>24 explicit citations to Responsible Builder Policy, Developer Terms, and Data API Terms</td></tr>
+        <tr><td><strong>Lacking Details</strong></td><td>Comprehensive technical specifications including API endpoints, rate limiting, and anonymization</td></tr>
+        <tr><td><strong>Submitter Identity</strong></td><td>Submitted by Research Staff (emkinney@iu.edu) with institutional affiliation<sup><a href="#fn1">[1]</a></sup></td></tr>
+        <tr><td><strong>Research Context</strong></td><td>Full IRB documentation (Protocol #28905), NIH funding, AoIR Ethics 3.0 compliance</td></tr>
+        <tr><td><strong>Technical Transparency</strong></td><td>Open-source repository available for audit<sup><a href="#fn22">[22]</a></sup></td></tr>
+    </table>
+
+    <!-- Policy Compliance Summary -->
+    <h2>Policy Compliance Summary</h2>
+
+    <h3>Privacy Protection</h3>
+    <p>We implement privacy-by-design with SHA-256 username anonymization<sup><a href="#fn4">[4]</a></sup> in compliance with Reddit's zero tolerance for privacy violations.<sup><a href="#fn5">[5]</a></sup> We will never attempt to re-identify, de-anonymize, or reverse engineer data about Redditors.<sup><a href="#fn5">[5]</a></sup></p>
+
+    <h3>Data Handling</h3>
+    <p>Data will be retained only for the duration of the active research project.<sup><a href="#fn6">[6]</a></sup> Upon termination, we will delete all cached or stored User Content.<sup><a href="#fn7">[7]</a></sup> Our tool re-queries the Reddit API for each analysis session rather than maintaining a static database.<sup><a href="#fn6">[6]</a></sup></p>
+
+    <h3>No AI/ML Training</h3>
+    <p>This research tool performs qualitative content analysis only. No machine learning models will be trained on Reddit data, in full compliance with:</p>
+    <ul>
+        <li>Responsible Builder Policy prohibition on AI training<sup><a href="#fn8">[8]</a></sup></li>
+        <li>Developer Terms §4.2 restrictions<sup><a href="#fn9">[9]</a></sup></li>
+        <li>Data API Terms §2.4 and §3.2 requirements<sup><a href="#fn3">[3]</a></sup><sup><a href="#fn10">[10]</a></sup></li>
+    </ul>
+
+    <h3>READ-ONLY Access</h3>
+    <p>Our tool has no capability to post, comment, vote, or send messages.<sup><a href="#fn13">[13]</a></sup> We request only <code>read</code> OAuth scope and will access data exclusively through the approved Reddit Data API.<sup><a href="#fn11">[11]</a></sup></p>
+
+    <h3>Rate Limiting</h3>
+    <p>We implement a token bucket rate limiter (60 requests/minute)<sup><a href="#fn17">[17]</a></sup> with LRU caching<sup><a href="#fn18">[18]</a></sup> to minimize API impact, fully respecting Reddit's rate limits.<sup><a href="#fn20">[20]</a></sup></p>
+
+    <h3>Non-Commercial Use</h3>
+    <p>This is federally-funded academic research with no commercial application.<sup><a href="#fn2">[2]</a></sup><sup><a href="#fn12">[12]</a></sup> Research is conducted at a non-profit institution and intended for peer-reviewed publication only.</p>
+
+    <!-- Technical Implementation -->
+    <h2>Technical Implementation</h2>
+
+    <h3>Repository</h3>
+    <p><strong>URL:</strong> <a href="https://github.com/stharrold/erkinney-mcp" target="_blank">https://github.com/stharrold/erkinney-mcp</a></p>
+    <p>The complete source code is open-source (Apache License 2.0) and available for audit.<sup><a href="#fn22">[22]</a></sup> We will maintain confidentiality of any Reddit confidential information.<sup><a href="#fn23">[23]</a></sup></p>
+
+    <h3>5 MCP Tools (READ-ONLY)</h3>
+    <ol>
+        <li><code>search_reddit_threads</code> - Find medication discussions</li>
+        <li><code>get_thread_details</code> - Retrieve thread content for analysis</li>
+        <li><code>batch_search_medications</code> - Efficient multi-medication search</li>
+        <li><code>get_subreddit_info</code> - Document research context</li>
+        <li><code>export_research_data</code> - Export anonymized data for NVivo/Atlas.ti</li>
+    </ol>
+
+    <h3>Why Not Devvit</h3>
+    <p>This is an offline academic research tool requiring local execution for IRB compliance, not an interactive Reddit application. Devvit does not support this use case.<sup><a href="#fn15">[15]</a></sup></p>
+
+    <!-- Commitments -->
+    <h2>Commitments</h2>
+    <p>We commit to:</p>
+    <ol>
+        <li><strong>Transparency</strong> - Full disclosure of purpose, open-source code<sup><a href="#fn16">[16]</a></sup></li>
+        <li><strong>Rate Limit Compliance</strong> - 60 req/min token bucket with backoff<sup><a href="#fn10">[10]</a></sup></li>
+        <li><strong>No Re-identification</strong> - SHA-256 anonymization, no off-platform matching<sup><a href="#fn5">[5]</a></sup></li>
+        <li><strong>Data Deletion</strong> - Delete all data upon project completion<sup><a href="#fn7">[7]</a></sup></li>
+        <li><strong>Audit Cooperation</strong> - Full cooperation with any Reddit review<sup><a href="#fn22">[22]</a></sup></li>
+        <li><strong>Credential Security</strong> - API credentials stored in macOS Keychain<sup><a href="#fn24">[24]</a></sup></li>
+    </ol>
+
+    <!-- Project Status -->
+    <h2>Project Status</h2>
+    <table>
+        <tr><th>Phase</th><th>Status</th></tr>
+        <tr><td>Tool Development</td><td><span class="status-compliant">Complete</span></td></tr>
+        <tr><td>IRB Approval</td><td><span class="status-compliant">Complete</span> (Oct 31, 2025)</td></tr>
+        <tr><td>API Access Request</td><td>This Submission</td></tr>
+        <tr><td>Data Collection</td><td>Pending Approval</td></tr>
+    </table>
+    <p><strong>Summary:</strong> Tool complete, IRB approved (Protocol #28905, Oct 2025), NIH-funded (MPRINT P30HD106451); awaiting API approval for 6-month data collection; revised submission addressing Request #15987717.</p>
+
+    <!-- Attachments -->
+    <h2>Attachments</h2>
+    <ol>
+        <li><strong>IRB Approval Letter</strong> - docs/references/IRB_28905.pdf</li>
+        <li><strong>Comprehensive Answers Document</strong> - reddit-answers.md</li>
+        <li><strong>Source Code Repository</strong> - <a href="https://github.com/stharrold/erkinney-mcp" target="_blank">https://github.com/stharrold/erkinney-mcp</a></li>
+    </ol>
+
+    <!-- Policy Compliance Matrix -->
+    <h2>Policy Compliance Matrix</h2>
+    <table>
+        <tr><th>Requirement</th><th>Policy Source</th><th>Status</th></tr>
+        <tr><td>Approval before access</td><td>Responsible Builder Policy<sup><a href="#fn16">[16]</a></sup></td><td><span class="status-compliant">Compliant</span></td></tr>
+        <tr><td>Transparency</td><td>Responsible Builder Policy<sup><a href="#fn16">[16]</a></sup></td><td><span class="status-compliant">Compliant</span></td></tr>
+        <tr><td>Rate limits</td><td>Data API Terms §2.9<sup><a href="#fn20">[20]</a></sup></td><td><span class="status-compliant">Compliant</span></td></tr>
+        <tr><td>No AI/ML training</td><td>RBP<sup><a href="#fn8">[8]</a></sup>, Dev Terms<sup><a href="#fn9">[9]</a></sup>, Data API<sup><a href="#fn3">[3]</a></sup><sup><a href="#fn10">[10]</a></sup></td><td><span class="status-compliant">Compliant</span></td></tr>
+        <tr><td>No re-identification</td><td>Responsible Builder Policy<sup><a href="#fn5">[5]</a></sup></td><td><span class="status-compliant">Compliant</span></td></tr>
+        <tr><td>Non-commercial</td><td>RBP<sup><a href="#fn2">[2]</a></sup>, Dev Terms<sup><a href="#fn12">[12]</a></sup></td><td><span class="status-compliant">Compliant</span></td></tr>
+        <tr><td>Data retention limits</td><td>Responsible Builder Policy<sup><a href="#fn6">[6]</a></sup></td><td><span class="status-compliant">Compliant</span></td></tr>
+        <tr><td>Query freshness</td><td>Responsible Builder Policy<sup><a href="#fn6">[6]</a></sup></td><td><span class="status-compliant">Compliant</span></td></tr>
+        <tr><td>App review cooperation</td><td>Developer Terms §3.1<sup><a href="#fn19">[19]</a></sup></td><td><span class="status-compliant">Compliant</span></td></tr>
+        <tr><td>Delete on termination</td><td>Data API Terms §6<sup><a href="#fn7">[7]</a></sup></td><td><span class="status-compliant">Compliant</span></td></tr>
+        <tr><td>Bot transparency</td><td>Responsible Builder Policy<sup><a href="#fn21">[21]</a></sup></td><td><span class="status-compliant">Compliant</span></td></tr>
+        <tr><td>Permitted access only</td><td>Data API Terms §2.8<sup><a href="#fn11">[11]</a></sup></td><td><span class="status-compliant">Compliant</span></td></tr>
+        <tr><td>Credential security</td><td>Developer Terms §1.4<sup><a href="#fn24">[24]</a></sup></td><td><span class="status-compliant">Compliant</span></td></tr>
+    </table>
+
+    <!-- Contact Information -->
+    <h2>Contact Information</h2>
+    <table>
+        <tr><th>Role</th><th>Name</th><th>Email</th></tr>
+        <tr><td>Research Contact</td><td>Emily Kinney, PhD</td><td>emkinney@iu.edu</td></tr>
+        <tr><td>Principal Investigator</td><td>Sara Quinney, PhD</td><td>squinney@iu.edu</td></tr>
+        <tr><td>Developer</td><td>Samuel Harrold</td><td>samuel.harrold@gmail.com</td></tr>
+    </table>
+
+    <!-- Signature -->
+    <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+        <p style="margin-bottom: 30px;">Respectfully submitted,</p>
+        <p style="margin-bottom: 5px; font-size: 18px; font-weight: bold; color: var(--mprint-blue);">Emily Kinney, PhD</p>
+        <p style="margin-bottom: 3px;">Research Staff</p>
+        <p style="margin-bottom: 3px;">Indiana University School of Medicine</p>
+        <p style="margin-bottom: 3px;">MPRINT Center (Maternal & Pediatric Precision in Therapeutics)</p>
+        <p><a href="mailto:emkinney@iu.edu">emkinney@iu.edu</a></p>
+    </div>
+
+    <!-- Footnotes -->
+    <div class="footnotes">
+        <h2>Policy Citations (24 Total)</h2>
+
+        <p class="footnote" id="fn1"><span class="footnote-ref">[1]</span> Reddit Researcher API Request Form: <em>"Please submit this form from a university-affiliated email address or your request will be denied."</em></p>
+
+        <p class="footnote" id="fn2"><span class="footnote-ref">[2]</span> Responsible Builder Policy, "Researchers" section: <em>"This section applies to academic researchers affiliated with an accredited university and Reddit for Researchers participants who are granted access solely for non-commercial purposes."</em></p>
+
+        <p class="footnote" id="fn3"><span class="footnote-ref">[3]</span> Data API Terms, Section 2.4 "User Content": <em>"copy and display the User Content using the Data API solely as necessary to develop, deploy, distribute, and run your App"</em> and <em>"no other rights or licenses are granted or implied, including any right to use User Content for other purposes, such as for training a machine learning or AI model, without the express permission of rightsholders"</em></p>
+
+        <p class="footnote" id="fn4"><span class="footnote-ref">[4]</span> Implementation: <code>mcp-reddit-research/src/privacy/anonymize.js</code> - SHA-256 username hashing with study-specific salt</p>
+
+        <p class="footnote" id="fn5"><span class="footnote-ref">[5]</span> Responsible Builder Policy, "Zero Tolerance for Privacy Violations": <em>"You are strictly prohibited from processing data to derive or infer potentially sensitive characteristics about Reddit users"</em> and <em>"you must never attempt to re-identify, de-anonymize, or reverse engineer data about Redditors including by matching data with off-platform identifiers"</em></p>
+
+        <p class="footnote" id="fn6"><span class="footnote-ref">[6]</span> Responsible Builder Policy, "Researchers > Data Handling and Retention": <em>"Researchers must not retain copies of data beyond what is strictly necessary for the immediate research project"</em> and <em>"Researchers must re-run queries against the most recent data export to ensure findings are up-to-date with any data removals or deletions."</em></p>
+
+        <p class="footnote" id="fn7"><span class="footnote-ref">[7]</span> Data API Terms, Section 6 "Termination": <em>"delete any cached or stored User Content and Materials... This includes any data or models that were derived from User Content"</em></p>
+
+        <p class="footnote" id="fn8"><span class="footnote-ref">[8]</span> Responsible Builder Policy, "No Unapproved Commercialization or AI Training": <em>"You must not sell, license, share, or otherwise commercialize Reddit data without express written approval. This extends to commercial and non-commercial mining, scraping, or using data for purposes like ads targeting or to train machine learning or AI models."</em></p>
+
+        <p class="footnote" id="fn9"><span class="footnote-ref">[9]</span> Developer Terms, Section 4.2 "Other Use Restrictions": Prohibits using Reddit data <em>"to train large language, artificial intelligence, or other algorithmic models or related services without our permission"</em></p>
+
+        <p class="footnote" id="fn10"><span class="footnote-ref">[10]</span> Data API Terms, Section 3.2 "Restrictions": Prohibits <em>"circumvent or exceed limitations on calls and use of the Data APIs... or otherwise use the Data APIs in a manner that would constitute excessive or abusive usage"</em></p>
+
+        <p class="footnote" id="fn11"><span class="footnote-ref">[11]</span> Data API Terms, Section 2.8 "Permitted Access": <em>"You will only access (or attempt to access) Data APIs using Access Info described in the Developer Documentation"</em></p>
+
+        <p class="footnote" id="fn12"><span class="footnote-ref">[12]</span> Developer Terms, Section 4.1 "Commercial Use Restrictions": Commercial use requires <em>"express written approval"</em></p>
+
+        <p class="footnote" id="fn13"><span class="footnote-ref">[13]</span> Responsible Builder Policy, "Prohibited Bot Activities": <em>"Bots must not manipulate Reddit's features (e.g., voting, karma) or circumvent safety mechanisms"</em></p>
+
+        <p class="footnote" id="fn14"><span class="footnote-ref">[14]</span> Developer Terms, Section 1.3 "Your Information": <em>"Reddit may ask you to provide us with information about your App... and yourself (e.g., your name and email)... This information must be up to date and accurate at all times."</em></p>
+
+        <p class="footnote" id="fn15"><span class="footnote-ref">[15]</span> Responsible Builder Policy, "Developers" section: <em>"Developers should use the Developer Platform ('Devvit') to build apps on Reddit... If your use case is not supported by Devvit, file a ticket here."</em></p>
+
+        <p class="footnote" id="fn16"><span class="footnote-ref">[16]</span> Responsible Builder Policy, "Introduction": <em>"You must not misrepresent or mask how or why you are accessing Reddit data."</em></p>
+
+        <p class="footnote" id="fn17"><span class="footnote-ref">[17]</span> Implementation: <code>mcp-reddit-research/src/utils/rate-limiter.js</code> - Token bucket algorithm, 60 tokens max, 1 token/second refill</p>
+
+        <p class="footnote" id="fn18"><span class="footnote-ref">[18]</span> Implementation: <code>mcp-reddit-research/src/utils/cache.js</code> - LRU cache with 100 item capacity</p>
+
+        <p class="footnote" id="fn19"><span class="footnote-ref">[19]</span> Developer Terms, Section 3.2 "App Users": <em>"You are solely responsible for your App (including its development, operation, maintenance, support, distribution, use, and App Content)"</em></p>
+
+        <p class="footnote" id="fn20"><span class="footnote-ref">[20]</span> Data API Terms, Section 2.9 "API Limitations": <em>"Reddit may set and enforce limits on your use of the Data APIs"</em></p>
+
+        <p class="footnote" id="fn21"><span class="footnote-ref">[21]</span> Responsible Builder Policy, "Bot Transparency": <em>"Bots should have a clearly specified purpose and scope of access, only accessing the subreddits and API actions they need and which are permitted."</em></p>
+
+        <p class="footnote" id="fn22"><span class="footnote-ref">[22]</span> Developer Terms, Section 2.2 "Audit Right": <em>"Reddit may monitor your use of Developer Services... and audit your App"</em></p>
+
+        <p class="footnote" id="fn23"><span class="footnote-ref">[23]</span> Data API Terms, Section 8.1 "Confidentiality": Requirement to maintain confidentiality of Reddit confidential information</p>
+
+        <p class="footnote" id="fn24"><span class="footnote-ref">[24]</span> Developer Terms, Section 1.4 "Access Info": <em>"You will only access (or attempt to access) and use the Developer Services through... access controls that are authorized and made available to you by Reddit"</em></p>
+
+        <h3>Policy Document References</h3>
+        <p><strong>Responsible Builder Policy:</strong> <a href="https://support.reddithelp.com/hc/en-us/articles/42728983564564-Responsible-Builder-Policy" target="_blank">https://support.reddithelp.com/hc/en-us/articles/42728983564564-Responsible-Builder-Policy</a></p>
+        <p><strong>Developer Terms:</strong> <a href="https://redditinc.com/policies/developer-terms" target="_blank">https://redditinc.com/policies/developer-terms</a></p>
+        <p><strong>Data API Terms:</strong> <a href="https://redditinc.com/policies/data-api-terms" target="_blank">https://redditinc.com/policies/data-api-terms</a></p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logos">
+            <a href="https://medicine.iu.edu/" target="_blank">
+                <img src="https://assets.iu.edu/brand/3.3.x/trident-large.png" alt="Indiana University">
+            </a>
+            <a href="https://www.mprint.org/" target="_blank">
+                <img src="https://static.wixstatic.com/media/83d0b5_5ad954ab68ac49c28070a7b19f503fc8~mv2.png/v1/fill/w_478,h_130,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/MPRINT%20logo_RGB-h-small-graphic-color.png" alt="MPRINT Center" style="height: 35px;">
+            </a>
+            <a href="https://www.nih.gov/" target="_blank">
+                <img src="https://www.ncbi.nlm.nih.gov/core/assets/style-guide/img/nih-logo.png" alt="National Institutes of Health">
+            </a>
+        </div>
+        <p><strong>MPRINT Center</strong> | Maternal & Pediatric Precision in Therapeutics</p>
+        <p>Indiana University School of Medicine | NIH/NICHD P30HD106451</p>
+        <p style="margin-top: 10px;">Repository: <a href="https://github.com/stharrold/erkinney-mcp" target="_blank">https://github.com/stharrold/erkinney-mcp</a></p>
+    </footer>
+</body>
+</html>
