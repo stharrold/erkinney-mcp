@@ -1,5 +1,5 @@
 {
-  "name": "mcp-bundle-reddit-research",
+  "name": "mcp-reddit-research",
   "version": "1.0.0",
   "description": "MCP bundle for Reddit research on pregnancy medications",
   "main": "index.js",

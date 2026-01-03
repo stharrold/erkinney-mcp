@@ -8,7 +8,7 @@ describe('MCP Bundle Reddit Research', () => {
   });
 
   test('basic assertions work', () => {
-    const obj = { name: 'mcp-bundle-reddit-research' };
-    expect(obj.name).toBe('mcp-bundle-reddit-research');
+    const obj = { name: 'mcp-reddit-research' };
+    expect(obj.name).toBe('mcp-reddit-research');
   });
 });

@@ -182,7 +182,7 @@ This study examines how pregnant individuals discuss medication use, side effect
 > - Responsible Builder Policy: *"you must never attempt to re-identify, de-anonymize, or reverse engineer data about Redditors including by matching data with off-platform identifiers"*[^5]
 > - SHA-256 hashing with unique study-specific salt prevents re-identification
 
-[^4]: Implementation: `mcp-bundle-reddit-research/src/privacy/anonymize.js`
+[^4]: Implementation: `mcp-reddit-research/src/privacy/anonymize.js`
 [^5]: Responsible Builder Policy, "Zero Tolerance for Privacy Violations" section
 
 #### 3. Ethical Considerations
@@ -308,7 +308,7 @@ This research follows the Association of Internet Researchers (AoIR) Ethics Guid
 
 1. **IRB Approval Letter** - Protocol #28905 (IRB_28905.pdf)
 2. **Source Code Repository** - https://github.com/stharrold/erkinney-mcp
-3. **Privacy Documentation** - mcp-bundle-reddit-research/PRIVACY.md
+3. **Privacy Documentation** - mcp-reddit-research/PRIVACY.md
 4. **This Compliance Document** - reddit-answers.md
 
 ---
@@ -401,8 +401,8 @@ This tool supports Indiana University's NIH-funded research examining medication
 > - Developer Terms §3.2: *"You are solely responsible for your App (including its development, operation, maintenance, support, distribution, use, and App Content)"*[^19]
 > - We maintain full documentation and support for this research tool
 
-[^17]: Implementation: `mcp-bundle-reddit-research/src/utils/rate-limiter.js`
-[^18]: Implementation: `mcp-bundle-reddit-research/src/utils/cache.js`
+[^17]: Implementation: `mcp-reddit-research/src/utils/rate-limiter.js`
+[^18]: Implementation: `mcp-reddit-research/src/utils/cache.js`
 [^19]: Developer Terms, Section 3.2 "App Users"
 
 ---
@@ -626,7 +626,7 @@ Devvit is Reddit's platform for building **interactive Reddit applications** (bo
 ### Repository Contents
 
 ```
-mcp-bundle-reddit-research/
+mcp-reddit-research/
 ├── index.js                    # MCP server entry point
 ├── src/
 │   ├── auth.js                # Reddit OAuth 2.0 authentication
@@ -698,7 +698,7 @@ mcp-bundle-reddit-research/
 **Attachments to include with submission:**
 
 1. **IRB Approval Letter** - IRB_28905.pdf
-2. **Privacy Policy Documentation** - mcp-bundle-reddit-research/PRIVACY.md
+2. **Privacy Policy Documentation** - mcp-reddit-research/PRIVACY.md
 3. **This Compliance Document** - reddit-answers.md
 
 ---
@@ -738,14 +738,14 @@ The following documents are available for review:
    - MIT License (open source)
    - Includes test suite
 
-3. **Privacy Documentation** - `mcp-bundle-reddit-research/PRIVACY.md`
+3. **Privacy Documentation** - `mcp-reddit-research/PRIVACY.md`
    - SHA-256 anonymization details
    - Data handling procedures
    - Retention policy
 
 4. **Technical Documentation**
-   - `mcp-bundle-reddit-research/README.md` - Setup and usage
-   - `mcp-bundle-reddit-research/docs/CLAUDE_SETUP.md` - Claude Desktop integration
+   - `mcp-reddit-research/README.md` - Setup and usage
+   - `mcp-reddit-research/docs/CLAUDE_SETUP.md` - Claude Desktop integration
 
 ---
 

@@ -77,7 +77,7 @@ Update your Claude Desktop config to load from Keychain:
 
 **Option 1: Shell wrapper (recommended)**
 
-Create `mcp-bundle-reddit-research/start-with-keychain.sh`:
+Create `mcp-reddit-research/start-with-keychain.sh`:
 ```bash
 #!/bin/bash
 source "$(dirname "$0")/scripts/load-env-from-keychain.sh"
@@ -89,7 +89,7 @@ Then in `claude_desktop_config.json`:
 {
   "mcpServers": {
     "reddit-research": {
-      "command": "/absolute/path/to/mcp-bundle-reddit-research/start-with-keychain.sh"
+      "command": "/absolute/path/to/mcp-reddit-research/start-with-keychain.sh"
     }
   }
 }

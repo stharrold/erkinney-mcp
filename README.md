@@ -19,7 +19,7 @@
 The primary component is a Model Context Protocol (MCP) server for collecting Reddit discussions about pregnancy medications.
 
 ```bash
-cd mcp-bundle-reddit-research
+cd mcp-reddit-research
 npm install
 cp .env.example .env
 # Edit .env with your Reddit API credentials
@@ -27,7 +27,7 @@ npm test
 npm start
 ```
 
-**Full setup guide**: [mcp-bundle-reddit-research/README.md](mcp-bundle-reddit-research/README.md)
+**Full setup guide**: [mcp-reddit-research/README.md](mcp-reddit-research/README.md)
 
 ### For Gemini Code Development
 
@@ -37,7 +37,7 @@ This repository includes a complete workflow automation system with 9 specialize
 
 ## 📦 What's Included
 
-### 1. Reddit Research MCP Bundle (`mcp-bundle-reddit-research/`)
+### 1. Reddit Research MCP Bundle (`mcp-reddit-research/`)
 
 Production-ready MCP server with 5 research tools:
 
@@ -56,10 +56,10 @@ Production-ready MCP server with 5 research tools:
 - ✅ Export formats: JSON, CSV
 
 **Documentation:**
-- [README.md](mcp-bundle-reddit-research/README.md) - Setup and usage
-- [PRIVACY.md](mcp-bundle-reddit-research/PRIVACY.md) - Privacy protection
-- [CLAUDE_SETUP.md](mcp-bundle-reddit-research/docs/CLAUDE_SETUP.md) - Claude Desktop configuration
-- [Examples](mcp-bundle-reddit-research/examples/) - Complete workflows
+- [README.md](mcp-reddit-research/README.md) - Setup and usage
+- [PRIVACY.md](mcp-reddit-research/PRIVACY.md) - Privacy protection
+- [CLAUDE_SETUP.md](mcp-reddit-research/docs/CLAUDE_SETUP.md) - Claude Desktop configuration
+- [Examples](mcp-reddit-research/examples/) - Complete workflows
 
 ### 2. Workflow Automation System (`.gemini/skills/`)
 
@@ -94,7 +94,7 @@ Python utilities for git and workflow management:
 
 ```
 erkinney-mcp/
-├── mcp-bundle-reddit-research/   # ✅ Reddit Research MCP Bundle (v1.1.0)
+├── mcp-reddit-research/   # ✅ Reddit Research MCP Bundle (v1.1.0)
 │   ├── src/                       # Source code (auth, tools, privacy, utils)
 │   ├── tests/                     # Jest test suite
 │   ├── docs/                      # Setup documentation
@@ -198,6 +198,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **For detailed documentation:**
 - Gemini Code users: See [GEMINI.md](GEMINI.md)
-- MCP Bundle users: See [mcp-bundle-reddit-research/README.md](mcp-bundle-reddit-research/README.md)
+- MCP Bundle users: See [mcp-reddit-research/README.md](mcp-reddit-research/README.md)
 - Contributors: See [CONTRIBUTING.md](CONTRIBUTING.md)
 - Version history: See [CHANGELOG.md](CHANGELOG.md)

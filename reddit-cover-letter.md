@@ -338,7 +338,7 @@ emkinney@iu.edu
 
 [^3]: Data API Terms, Section 2.4 "User Content": *"copy and display the User Content using the Data API solely as necessary to develop, deploy, distribute, and run your App"* and *"no other rights or licenses are granted or implied, including any right to use User Content for other purposes, such as for training a machine learning or AI model, without the express permission of rightsholders"*
 
-[^4]: Implementation: `mcp-bundle-reddit-research/src/privacy/anonymize.js` - SHA-256 username hashing with study-specific salt
+[^4]: Implementation: `mcp-reddit-research/src/privacy/anonymize.js` - SHA-256 username hashing with study-specific salt
 
 [^5]: Responsible Builder Policy, "Zero Tolerance for Privacy Violations" section: *"You are strictly prohibited from processing data to derive or infer potentially sensitive characteristics about Reddit users"* and *"you must never attempt to re-identify, de-anonymize, or reverse engineer data about Redditors including by matching data with off-platform identifiers"*
 
@@ -364,9 +364,9 @@ emkinney@iu.edu
 
 [^16]: Responsible Builder Policy, "Introduction": *"You must not misrepresent or mask how or why you are accessing Reddit data. This prohibits registering multiple accounts or submitting multiple requests for the same use case."*
 
-[^17]: Implementation: `mcp-bundle-reddit-research/src/utils/rate-limiter.js` - Token bucket algorithm, 60 tokens max, 1 token/second refill
+[^17]: Implementation: `mcp-reddit-research/src/utils/rate-limiter.js` - Token bucket algorithm, 60 tokens max, 1 token/second refill
 
-[^18]: Implementation: `mcp-bundle-reddit-research/src/utils/cache.js` - LRU cache with 100 item capacity
+[^18]: Implementation: `mcp-reddit-research/src/utils/cache.js` - LRU cache with 100 item capacity
 
 [^19]: Developer Terms, Section 3.2 "App Users": *"You are solely responsible for your App (including its development, operation, maintenance, support, distribution, use, and App Content)"*
 

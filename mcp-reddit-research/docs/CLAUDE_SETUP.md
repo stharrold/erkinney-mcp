@@ -18,19 +18,19 @@ Before starting, ensure you have:
 
 ### Step 1: Locate Your Project Directory
 
-Find the **absolute path** to your `mcp-bundle-reddit-research` directory:
+Find the **absolute path** to your `mcp-reddit-research` directory:
 
 ```bash
-cd /path/to/mcp-bundle-reddit-research
+cd /path/to/mcp-reddit-research
 pwd
 ```
 
 Copy the full path that is displayed. You'll need this for the configuration.
 
 **Example paths**:
-- macOS: `/Users/yourname/Documents/mcp-bundle-reddit-research`
-- Windows: `C:\Users\yourname\Documents\mcp-bundle-reddit-research`
-- Linux: `/home/yourname/mcp-bundle-reddit-research`
+- macOS: `/Users/yourname/Documents/mcp-reddit-research`
+- Windows: `C:\Users\yourname\Documents\mcp-reddit-research`
+- Linux: `/home/yourname/mcp-reddit-research`
 
 ---
 
@@ -66,7 +66,7 @@ Create the file with this content:
   "mcpServers": {
     "reddit-research": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-bundle-reddit-research/index.js"]
+      "args": ["/absolute/path/to/mcp-reddit-research/index.js"]
     }
   }
 }
@@ -85,7 +85,7 @@ If you already have other MCP servers configured, add the `reddit-research` entr
     },
     "reddit-research": {
       "command": "node",
-      "args": ["/absolute/path/to/mcp-bundle-reddit-research/index.js"]
+      "args": ["/absolute/path/to/mcp-reddit-research/index.js"]
     }
   }
 }
@@ -143,7 +143,7 @@ If Claude uses the `get_subreddit_info` tool and returns subreddit details, **in
   "mcpServers": {
     "reddit-research": {
       "command": "node",
-      "args": ["/Users/johndoe/Documents/mcp-bundle-reddit-research/index.js"]
+      "args": ["/Users/johndoe/Documents/mcp-reddit-research/index.js"]
     }
   }
 }
@@ -156,7 +156,7 @@ If Claude uses the `get_subreddit_info` tool and returns subreddit details, **in
   "mcpServers": {
     "reddit-research": {
       "command": "node",
-      "args": ["C:/Users/johndoe/Documents/mcp-bundle-reddit-research/index.js"]
+      "args": ["C:/Users/johndoe/Documents/mcp-reddit-research/index.js"]
     }
   }
 }
@@ -171,7 +171,7 @@ If Claude uses the `get_subreddit_info` tool and returns subreddit details, **in
   "mcpServers": {
     "reddit-research": {
       "command": "node",
-      "args": ["/home/johndoe/mcp-bundle-reddit-research/index.js"]
+      "args": ["/home/johndoe/mcp-reddit-research/index.js"]
     }
   }
 }
@@ -208,11 +208,11 @@ If Claude uses the `get_subreddit_info` tool and returns subreddit details, **in
 **Error**: "Reddit authentication failed"
 
 **Solutions**:
-1. Check `.env` file is in `mcp-bundle-reddit-research/` directory
+1. Check `.env` file is in `mcp-reddit-research/` directory
 2. Verify Reddit credentials are correct
 3. Test auth manually:
    ```bash
-   cd mcp-bundle-reddit-research
+   cd mcp-reddit-research
    node -e "import('./src/auth.js').then(m => m.createRedditClient()).then(() => console.log('✓ Success')).catch(e => console.error('✗ Error:', e.message))"
    ```
 

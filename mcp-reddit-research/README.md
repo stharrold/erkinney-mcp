@@ -72,7 +72,7 @@ Before installation, ensure you have:
 ```bash
 # Option A: Clone from GitHub
 git clone https://github.com/stharrold/erkinney-mcp.git
-cd erkinney-mcp/mcp-bundle-reddit-research
+cd erkinney-mcp/mcp-reddit-research
 
 # Option B: Download ZIP and extract
 # Then navigate to the extracted directory
@@ -149,7 +149,7 @@ If successful, you'll see: `✓ Authentication successful`
      "mcpServers": {
        "reddit-research": {
          "command": "node",
-         "args": ["/absolute/path/to/mcp-bundle-reddit-research/index.js"]
+         "args": ["/absolute/path/to/mcp-reddit-research/index.js"]
        }
      }
    }
@@ -159,7 +159,7 @@ If successful, you'll see: `✓ Authentication successful`
 
    **Find the path**:
    ```bash
-   cd mcp-bundle-reddit-research
+   cd mcp-reddit-research
    pwd
    # Copy this full path
    ```
@@ -177,7 +177,7 @@ If successful, you'll see: `✓ Authentication successful`
      "mcpServers": {
        "reddit-research": {
          "command": "node",
-         "args": ["C:/Users/YourName/path/to/mcp-bundle-reddit-research/index.js"]
+         "args": ["C:/Users/YourName/path/to/mcp-reddit-research/index.js"]
        }
      }
    }
