@@ -1,203 +1,95 @@
-# MPRINT Research Toolkit
+# Erkinney MCP
 
-[![Tests](https://github.com/stharrold/erkinney-mcp/actions/workflows/tests.yml/badge.svg)](https://github.com/stharrold/erkinney-mcp/actions/workflows/tests.yml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![Node.js Version](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org/)
-[![Python Version](https://img.shields.io/badge/python-3.12%2B-blue)](https://www.python.org/)
+[![Python Version](https://img.shields.io/badge/python-3.11%2B-blue)](https://www.python.org/)
 
-**MCP research toolkit for pregnancy medication studies.** Aggregates data from social media (Reddit), academic databases (PubMed, Scholar), government sources (FDA, CDC), and clinical platforms. Features IRB-compliant anonymization and structured exports for qualitative analysis tools (NVivo, Atlas.ti).
+**A streamlined, research-focused chatbot for exploring pregnancy medication discussions on Reddit.**
 
-**Research Contact**: emkinney@iu.edu
-**Development Contact**: samuel.harrold@gmail.com
+This tool connects Google's Gemini 2.0 Flash model with Reddit data via the Model Context Protocol (MCP). It allows researchers to safely and efficiently query Reddit threads while maintaining strict IRB compliance (user anonymization, approved user-agents).
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Installation & Usage
 
-### Reddit Research MCP Bundle
+**Prerequisites:**
+- **Python 3.11+** installed ([Download Python](https://www.python.org/downloads/))
+- **Reddit API Credentials** (Client ID & Client Secret)
+- **Google Gemini API Key**
 
-The primary component is a Model Context Protocol (MCP) server for collecting Reddit discussions about pregnancy medications.
+### 🍎 macOS
 
-```bash
-cd mcp-reddit-research
-npm install
-cp .env.example .env
-# Edit .env with your Reddit API credentials
-npm test
-npm start
-```
+1.  **Download** the repository (Code -> Download ZIP) and unzip it.
+2.  Open **Terminal**.
+3.  Navigate to the folder (e.g., `cd ~/Downloads/erkinney-mcp-main`).
+4.  Run the launcher:
+    ```bash
+    ./start_mac.command
+    ```
+5.  The application will open in your browser. Enter your API keys in the sidebar to start chatting.
 
-**Full setup guide**: [mcp-reddit-research/README.md](mcp-reddit-research/README.md)
+### 🪟 Windows
 
-### For Gemini Code Development
-
-This repository includes a complete workflow automation system with 9 specialized skills. See [GEMINI.md](GEMINI.md) for detailed instructions.
-
----
-
-## 📦 What's Included
-
-### 1. Reddit Research MCP Bundle (`mcp-reddit-research/`)
-
-Production-ready MCP server with 5 research tools:
-
-- **search_reddit_threads** - Search medication discussions with filters
-- **get_thread_details** - Retrieve full thread content with comments
-- **batch_search_medications** - Multi-medication search with progress tracking
-- **export_research_data** - Export to JSON/CSV with anonymization
-- **get_subreddit_info** - Subreddit metadata and rules
-
-**Key Features:**
-- ✅ IRB-compliant SHA-256 anonymization
-- ✅ AoIR Ethics 3.0 framework compliance
-- ✅ Rate limiting (60 req/min) with automatic retry
-- ✅ LRU caching to reduce API calls
-- ✅ OAuth 2.0 authentication with Reddit API
-- ✅ Export formats: JSON, CSV
-
-**Documentation:**
-- [README.md](mcp-reddit-research/README.md) - Setup and usage
-- [PRIVACY.md](mcp-reddit-research/PRIVACY.md) - Privacy protection
-- [CLAUDE_SETUP.md](mcp-reddit-research/docs/CLAUDE_SETUP.md) - Claude Desktop configuration
-- [Examples](mcp-reddit-research/examples/) - Complete workflows
-
-### 2. Workflow Automation System (`.gemini/skills/`)
-
-Nine specialized skills for automated development workflow:
-
-| Skill | Purpose |
-|-------|---------|
-| **workflow-orchestrator** | Coordinates 6-phase development workflow |
-| **bmad-planner** | Business Model Architecture Document creation |
-| **speckit-author** | Technical specification generation |
-| **git-workflow-manager** | Automated git operations (worktrees, releases, versioning) |
-| **quality-enforcer** | Test coverage and quality gates |
-| **tech-stack-adapter** | Auto-detects project technology stack |
-| **workflow-utilities** | Shared utilities (archiving, validation) |
-| **agentdb-state-manager** | Persistent state with DuckDB |
-| **initialize-repository** | Bootstrap new projects with full workflow |
-
-**Slash Commands:**
-- `/specify [description]` - Create feature specification
-- `/plan [details]` - Generate design artifacts
-- `/tasks [context]` - Create dependency-ordered task list
-
-### 3. Standalone Tools (`tools/`)
-
-Python utilities for git and workflow management:
-- `tools/git-helpers/` - Worktree creation, semantic versioning
-- `tools/workflow-utilities/` - Archive management, directory validation
+1.  **Download** the repository and unzip it.
+2.  Double-click the **`start_windows.bat`** file.
+3.  A command window will appear, install dependencies, and then launch the application in your browser.
 
 ---
 
-## 📂 Repository Structure
+## 🗑️ Uninstallation
+
+To remove the application and all its dependencies from your system:
+
+1.  **Delete the project folder**: Simply move the entire `erkinney-mcp` directory to the Trash/Recycle Bin.
+2.  **That's it!** All dependencies are installed in a local `.venv` folder within the project, so deleting the folder cleans up everything. No global system files are modified.
+
+---
+
+## 🏗️ Architecture
+
+This project uses a **single-tool architecture** to ensure simplicity and reliability.
+
+- **Frontend (`src/client/`)**: A Streamlit-based chat interface. It handles user input, displays responses, and securely manages API credentials in memory (never saved to disk).
+- **Backend (`src/server/`)**: A Python MCP server using `fastmcp`. It executes Reddit searches and ensures compliance rules (User-Agent strings) are enforced.
+- **Launcher**: Platform-specific scripts (`start_mac.command`, `start_windows.bat`) that automate environment setup using `uv` (or `pip` fallback).
+
+### Directory Structure
 
 ```
 erkinney-mcp/
-├── mcp-reddit-research/   # ✅ Reddit Research MCP Bundle (v1.1.0)
-│   ├── src/                       # Source code (auth, tools, privacy, utils)
-│   ├── tests/                     # Jest test suite
-│   ├── docs/                      # Setup documentation
-│   ├── examples/                  # Usage examples
-│   ├── resources/                 # Medication templates, ethics guidelines
-│   └── index.js                   # MCP server entry point
-├── .gemini/
-│   └── skills/                    # 9 workflow automation skills
-├── tools/                         # Standalone Python utilities
-├── .github/workflows/             # CI/CD (Python + Node.js support)
-├── ARCHIVED/                      # Historical implementation prompts
-├── .tmp/                          # Reference implementations (not for production)
-├── GEMINI.md                      # 📖 Guide for Gemini Code instances
-├── CONTRIBUTING.md                # 📖 Contribution guidelines
-├── CHANGELOG.md                   # 📖 Version history
-└── README.md                      # 📖 This file
+├── src/
+│   ├── client/          # Streamlit UI & Gemini Bridge
+│   └── server/          # MCP Server & Reddit Tools
+├── docs/
+│   ├── reddit-application/ # Reddit API application artifacts
+│   └── references/         # Policy PDFs and reference docs
+├── start_mac.command    # macOS Launcher
+├── start_windows.bat    # Windows Launcher
+├── pyproject.toml       # Project configuration & dependencies
+└── ARCHIVED/            # Legacy Node.js implementation (reference only)
 ```
 
 ---
 
-## 🔬 Research Use Case
+## 🛡️ Security & Compliance
 
-This toolkit supports health communication research on pregnancy medication experiences:
-
-1. **Data Collection**: Search Reddit for medication discussions (e.g., ondansetron, levothyroxine)
-2. **Privacy Protection**: Automatic SHA-256 anonymization of usernames
-3. **Export**: CSV/JSON formats compatible with NVivo and Atlas.ti
-4. **Analysis**: Qualitative analysis of patient experiences and concerns
-
-**Supported Subreddits**: r/pregnant, r/babybumps, r/beyondthebump, r/tryingforababy
-
----
-
-## 🛠️ Technology Stack
-
-**MCP Bundle:**
-- Node.js 18+ with ES modules
-- [@modelcontextprotocol/sdk](https://github.com/modelcontextprotocol/sdk) 0.5.0
-- [snoowrap](https://github.com/not-an-aardvark/snoowrap) (Reddit API client)
-- Jest for testing
-
-**Workflow System:**
-- Python 3.12+ (standard library only)
-- uv for dependency management
-- DuckDB for state management
-- GitHub CLI (gh) for automation
-
----
-
-## 📊 Current Status
-
-**Latest Release**: [v1.1.0](https://github.com/stharrold/erkinney-mcp/releases/tag/v1.1.0) - Reddit Research MCP Bundle
-
-**Implemented:**
-- ✅ Complete Reddit Research MCP Bundle with 5 tools
-- ✅ IRB-compliant privacy protection (SHA-256 anonymization)
-- ✅ 9-skill workflow automation system
-- ✅ CI/CD for Python and Node.js projects
-- ✅ Comprehensive documentation
-
-**Planned:**
-- 🔲 PubMed research MCP bundle
-- 🔲 Google Scholar research MCP bundle
-- 🔲 FDA/CDC data collection tools
-- 🔲 Integrated multi-source research dashboard
+- **Zero Persistence**: API keys are injected directly into the server process environment variables at runtime. They are **never** written to config files or disk.
+- **Compliance**: The Reddit tool hardcodes the User-Agent to `ResearchBot/1.0 (IRB Approved)` to strictly adhere to platform usage agreements.
+- **Privacy**: The application is designed for qualitative analysis of public data, adhering to AoIR Ethics 3.0 guidelines.
 
 ---
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for:
-- Development workflow (git-flow + GitHub-flow hybrid)
-- Branch strategy (main → develop → contrib/username → feature/*)
-- Commit message conventions
-- Quality gates and testing requirements
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on our workflow.
+
+**Development Setup:**
+1.  Clone the repository.
+2.  Install [uv](https://github.com/astral-sh/uv) (recommended).
+3.  Run `uv sync` to install dependencies.
+4.  Run the app: `uv run streamlit run src/client/app.py`.
 
 ---
 
 ## 📄 License
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 📞 Contact
-
-- **Research Inquiries**: emkinney@iu.edu (Dr. Erin Kinney)
-- **Technical Support**: samuel.harrold@gmail.com (Sam Harrold)
-- **Issues**: [GitHub Issues](https://github.com/stharrold/erkinney-mcp/issues)
-
----
-
-## 🙏 Acknowledgments
-
-- Built with [Model Context Protocol](https://modelcontextprotocol.io/)
-- Reddit data via [snoowrap](https://github.com/not-an-aardvark/snoowrap)
-- Ethics framework: [AoIR Ethics 3.0](https://aoir.org/reports/ethics3.pdf)
-- Developed with [Gemini Code](https://gemini.google.com/code)
-
----
-
-**For detailed documentation:**
-- Gemini Code users: See [GEMINI.md](GEMINI.md)
-- MCP Bundle users: See [mcp-reddit-research/README.md](mcp-reddit-research/README.md)
-- Contributors: See [CONTRIBUTING.md](CONTRIBUTING.md)
-- Version history: See [CHANGELOG.md](CHANGELOG.md)
