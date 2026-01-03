@@ -153,3 +153,9 @@ uv.lock
 .mypy_cache/
 .ruff_cache/
 .pytest_cache/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+.tmp/
