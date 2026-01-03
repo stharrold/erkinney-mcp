@@ -275,7 +275,9 @@ def copy_commands(source_path: Path, target_path: Path, force: bool) -> int:
         print_warning("Workflow directory not found after copying commands")
         return 0
 
-    commands = list(workflow_dir.glob("v7x1_*.md"))
+    commands = list(workflow_dir.glob("v7x1_*.toml"))
+    if not commands:
+        commands = list(workflow_dir.glob("v7x1_*.md"))
     if not commands:
         print_warning("No v7x1_* workflow commands found in commands/workflow/")
         return 0

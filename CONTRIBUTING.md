@@ -1,4 +1,4 @@
-# Contributing to erkinney-mcp
+# Contributing to stharrold-templates
 
 Thank you for considering contributing to this project! This document provides guidelines for contributing to the MCP configuration templates and workflow automation tools.
 
@@ -44,8 +44,8 @@ az --version              # Azure CLI (for Azure DevOps repos)
 
 1. **Fork and clone the repository:**
    ```bash
-   gh repo fork stharrold/erkinney-mcp --clone
-   cd erkinney-mcp
+   gh repo fork stharrold/stharrold-templates --clone
+   cd stharrold-templates
    ```
 
 2. **Build container:**
@@ -158,11 +158,13 @@ This repository includes 6 active workflow skills in `.gemini/skills/`:
 
 ## AI Configuration Guidelines
 
-| To change... | Edit this |
-|--------------|-----------|
-| Skills | `.gemini/skills/` |
-| Commands | `.gemini/commands.toml` |
-| Root instructions | `GEMINI.md` |
+| To change... | Edit this | NOT this |
+|--------------|-----------|----------|
+| Skills | `.gemini/skills/` | `.agents/` |
+| Commands | `.gemini/commands.toml` | N/A |
+| Root instructions | `GEMINI.md` | `AGENTS.md` |
+
+**Note**: `.agents/` and `AGENTS.md` are automatically synced from `.gemini/` sources.
 
 ## Questions or Issues?
 

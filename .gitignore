@@ -68,7 +68,6 @@ dist
 .vuepress/dist
 # vuepress v2.x temp and cache directory
 .temp
-.cache
 # Sveltekit cache directory
 .svelte-kit/
 # vitepress build output
@@ -118,3 +117,7 @@ build/
 *.egg-info/
 .tmp/
 !docs/references/*.pdf
+
+# Workflow system
+*.duckdb
+*.duckdb.wal
