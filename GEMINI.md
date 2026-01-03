@@ -11,7 +11,7 @@ This file provides guidance to Gemini Code (gemini.ai/code) when working with co
 ## Code Architecture
 
 This repository contains:
-- **mcp-bundle-reddit-research/**: Node.js MCP server (production)
+- **mcp-reddit-research/**: Node.js MCP server (production)
 - **tools/**: Python utilities
 - **.gemini/skills/**: Workflow automation skills (Python)
 
@@ -46,7 +46,7 @@ uv run python .gemini/skills/quality-enforcer/scripts/run_quality_gates.py
 ### Application Commands (Node.js)
 
 ```bash
-cd mcp-bundle-reddit-research
+cd mcp-reddit-research
 npm install
 npm test
 npm start

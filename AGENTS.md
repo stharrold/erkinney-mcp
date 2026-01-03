@@ -5,16 +5,16 @@ Cross-tool AI configuration for this repository. Synced from CLAUDE.md.
 ## What This Repository Is
 
 **MCP research toolkit for pregnancy medication studies (IRB Protocol #28905)**:
-- Reddit Research MCP Bundle (`mcp-bundle-reddit-research/`) - Node.js MCP server
+- Reddit Research MCP Bundle (`mcp-reddit-research/`) - Node.js MCP server
 - IRB-compliant SHA-256 anonymization and exports for NVivo/Atlas.ti
 - Workflow automation skills (`.claude/skills/`) - Python stdlib-only
 
 ## Essential Commands
 
-### MCP Bundle (`mcp-bundle-reddit-research/`)
+### MCP Bundle (`mcp-reddit-research/`)
 
 ```bash
-cd mcp-bundle-reddit-research
+cd mcp-reddit-research
 npm install && npm test        # Setup and verify
 npm run lint                   # ESLint
 npm run test:coverage          # Coverage report
