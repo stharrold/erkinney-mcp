@@ -29,9 +29,9 @@ npm start
 
 **Full setup guide**: [mcp-bundle-reddit-research/README.md](mcp-bundle-reddit-research/README.md)
 
-### For Claude Code Development
+### For Gemini Code Development
 
-This repository includes a complete workflow automation system with 9 specialized skills. See [CLAUDE.md](CLAUDE.md) for detailed instructions.
+This repository includes a complete workflow automation system with 9 specialized skills. See [GEMINI.md](GEMINI.md) for detailed instructions.
 
 ---
 
@@ -61,7 +61,7 @@ Production-ready MCP server with 5 research tools:
 - [CLAUDE_SETUP.md](mcp-bundle-reddit-research/docs/CLAUDE_SETUP.md) - Claude Desktop configuration
 - [Examples](mcp-bundle-reddit-research/examples/) - Complete workflows
 
-### 2. Workflow Automation System (`.claude/skills/`)
+### 2. Workflow Automation System (`.gemini/skills/`)
 
 Nine specialized skills for automated development workflow:
 
@@ -101,14 +101,13 @@ erkinney-mcp/
 │   ├── examples/                  # Usage examples
 │   ├── resources/                 # Medication templates, ethics guidelines
 │   └── index.js                   # MCP server entry point
-├── .claude/
-│   ├── commands/                  # Slash commands (specify, plan, tasks)
+├── .gemini/
 │   └── skills/                    # 9 workflow automation skills
 ├── tools/                         # Standalone Python utilities
 ├── .github/workflows/             # CI/CD (Python + Node.js support)
 ├── ARCHIVED/                      # Historical implementation prompts
 ├── .tmp/                          # Reference implementations (not for production)
-├── CLAUDE.md                      # 📖 Guide for Claude Code instances
+├── GEMINI.md                      # 📖 Guide for Gemini Code instances
 ├── CONTRIBUTING.md                # 📖 Contribution guidelines
 ├── CHANGELOG.md                   # 📖 Version history
 └── README.md                      # 📖 This file
@@ -193,12 +192,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Built with [Model Context Protocol](https://modelcontextprotocol.io/)
 - Reddit data via [snoowrap](https://github.com/not-an-aardvark/snoowrap)
 - Ethics framework: [AoIR Ethics 3.0](https://aoir.org/reports/ethics3.pdf)
-- Developed with [Claude Code](https://claude.com/claude-code)
+- Developed with [Gemini Code](https://gemini.google.com/code)
 
 ---
 
 **For detailed documentation:**
-- Claude Code users: See [CLAUDE.md](CLAUDE.md)
+- Gemini Code users: See [GEMINI.md](GEMINI.md)
 - MCP Bundle users: See [mcp-bundle-reddit-research/README.md](mcp-bundle-reddit-research/README.md)
 - Contributors: See [CONTRIBUTING.md](CONTRIBUTING.md)
 - Version history: See [CHANGELOG.md](CHANGELOG.md)

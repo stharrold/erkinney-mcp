@@ -142,3 +142,14 @@ vite.config.ts.timestamp-*
 *.pdf
 !reddit-cover-letter.pdf
 !IRB_28905.pdf
+
+# Python/Workflow
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.gemini-state/
+uv.lock
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
