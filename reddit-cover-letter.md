@@ -273,7 +273,7 @@ We commit to:
 
 ## Attachments
 
-1. **IRB Approval Letter** - IRB_28905.pdf
+1. **IRB Approval Letter** - docs/references/IRB_28905.pdf
 2. **Comprehensive Answers Document** - reddit-answers.md
 3. **Source Code Repository** - https://github.com/stharrold/erkinney-mcp
 

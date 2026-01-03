@@ -306,7 +306,7 @@ This research follows the Association of Internet Researchers (AoIR) Ethics Guid
 
 **Attachments to include with submission:**
 
-1. **IRB Approval Letter** - Protocol #28905 (IRB_28905.pdf)
+1. **IRB Approval Letter** - Protocol #28905 (docs/references/IRB_28905.pdf)
 2. **Source Code Repository** - https://github.com/stharrold/erkinney-mcp
 3. **Privacy Documentation** - mcp-reddit-research/PRIVACY.md
 4. **This Compliance Document** - reddit-answers.md
@@ -697,7 +697,7 @@ mcp-reddit-research/
 
 **Attachments to include with submission:**
 
-1. **IRB Approval Letter** - IRB_28905.pdf
+1. **IRB Approval Letter** - docs/references/IRB_28905.pdf
 2. **Privacy Policy Documentation** - mcp-reddit-research/PRIVACY.md
 3. **This Compliance Document** - reddit-answers.md
 
@@ -728,7 +728,7 @@ mcp-reddit-research/
 
 The following documents are available for review:
 
-1. **IRB Approval** - `IRB_28905.pdf`
+1. **IRB Approval** - `docs/references/IRB_28905.pdf`
    - Protocol #28905, Exempt Category 4(i)
    - Indiana University IRB
    - Approved October 31, 2025
