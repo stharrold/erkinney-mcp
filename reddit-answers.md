@@ -735,7 +735,7 @@ The following documents are available for review:
 
 2. **Source Code** - https://github.com/stharrold/erkinney-mcp
    - Complete implementation
-   - MIT License (open source)
+   - Apache License 2.0 (open source)
    - Includes test suite
 
 3. **Privacy Documentation** - `mcp-reddit-research/PRIVACY.md`

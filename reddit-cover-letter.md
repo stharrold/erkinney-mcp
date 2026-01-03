@@ -109,7 +109,7 @@ All data is accessed via Reddit Data API and processed in compliance with Data A
 - **API Access:** READ-ONLY via Reddit Data API (OAuth scope: `read` only)[^11]
 - **Rate Limiting:** Token bucket algorithm, 60 requests/minute maximum[^17]
 - **Caching:** LRU cache (100 items) to reduce redundant API calls[^18]
-- **Repository:** https://github.com/stharrold/erkinney-mcp (MIT License, open for audit)[^22]
+- **Repository:** https://github.com/stharrold/erkinney-mcp (Apache License 2.0, open for audit)[^22]
 
 ---
 
@@ -229,7 +229,7 @@ This is federally-funded academic research with no commercial application.[^2][^
 
 **URL:** https://github.com/stharrold/erkinney-mcp
 
-The complete source code is open-source (MIT License) and available for audit.[^22] We will maintain confidentiality of any Reddit confidential information.[^23]
+The complete source code is open-source (Apache License 2.0) and available for audit.[^22] We will maintain confidentiality of any Reddit confidential information.[^23]
 
 ### 5 MCP Tools (READ-ONLY)
 
