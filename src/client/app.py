@@ -23,6 +23,8 @@ with st.sidebar:
     gemini_api_key = st.text_input("Google Gemini API Key", type="password")
     reddit_client_id = st.text_input("Reddit Client ID", type="password")
     reddit_client_secret = st.text_input("Reddit Client Secret", type="password")
+    reddit_username = st.text_input("Reddit Username (Optional)", help="Required for moderation/posting")
+    reddit_password = st.text_input("Reddit Password (Optional)", type="password", help="Required for moderation/posting")
     
     st.divider()
     st.markdown(f"**Compliance Agent:** `{REDDIT_USER_AGENT}`")
@@ -49,18 +51,25 @@ async def run_chat():
     # Initialize Gemini Client
     client = genai.Client(api_key=gemini_api_key)
 
-    # MCP Server Parameters (launching the mock server)
-    # We point to the local server/main.py
+    # MCP Server Parameters (launching the local server)
+    env = {
+        **os.environ,
+        "REDDIT_CLIENT_ID": reddit_client_id,
+        "REDDIT_CLIENT_SECRET": reddit_client_secret,
+        "REDDIT_USER_AGENT": REDDIT_USER_AGENT,
+        "PYTHONPATH": os.getcwd()
+    }
+    
+    # Add optional account credentials
+    if reddit_username:
+        env["REDDIT_USERNAME"] = reddit_username
+    if reddit_password:
+        env["REDDIT_PASSWORD"] = reddit_password
+
     server_params = StdioServerParameters(
         command="python",
-        args=[os.path.join("server", "main.py")],
-        env={
-            **os.environ,
-            "REDDIT_CLIENT_ID": reddit_client_id,
-            "REDDIT_CLIENT_SECRET": reddit_client_secret,
-            "REDDIT_USER_AGENT": REDDIT_USER_AGENT,
-            "PYTHONPATH": os.getcwd()
-        }
+        args=[os.path.join("src", "server", "main.py")],
+        env=env
     )
 
     # Initialize Session State for Chat History
