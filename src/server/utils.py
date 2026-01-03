@@ -7,7 +7,12 @@ import os
 
 # Unique salt for this study to prevent cross-platform correlation
 # In production, this should be set via environment variable
-STUDY_SALT = os.environ.get("STUDY_SALT", "erkinney-mcp-2025-default-salt")
+STUDY_SALT = os.environ.get("STUDY_SALT")
+
+if not STUDY_SALT:
+    # Fallback for development/testing ONLY - log a warning in production
+    # For strict IRB compliance, this should ideally raise an error
+    STUDY_SALT = "erkinney-mcp-2025-default-salt"
 
 
 def anonymize_username(username: str) -> str:

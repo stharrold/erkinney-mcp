@@ -33,58 +33,76 @@ def register_research_tools(mcp, reddit: praw.Reddit):
             min_comments: Minimum number of comments required.
             min_words: Minimum word count in the post.
             max_results: Maximum number of threads to return.
+
+        Returns:
+            dict: 'threads' list of thread dictionaries or 'error'.
         """
+        # Validate max_results
+        if max_results <= 0:
+            max_results = 1
+        MAX_REDDIT_SEARCH_LIMIT = 1000
+        effective_limit = min(max_results * 2, MAX_REDDIT_SEARCH_LIMIT)
+
         # Parse dates
-        start_ts = datetime.strptime(start_date, "%Y-%m-%d").timestamp()
-        end_ts = datetime.strptime(end_date, "%Y-%m-%d").timestamp()
+        try:
+            start_ts = datetime.strptime(start_date, "%Y-%m-%d").timestamp()
+            end_ts = datetime.strptime(end_date, "%Y-%m-%d").timestamp()
+        except ValueError as exc:
+            return {
+                "success": False,
+                "error": f"Invalid date format: {exc}. Expected YYYY-MM-DD.",
+            }
 
         query = f"{medication_name}"
-        subreddit_str = "+".join(subreddits)
+        combined_subreddit_query = "+".join(subreddits)
 
         threads = []
-        # Search across specified subreddits
-        # Fetch more than max_results to allow for filtering
-        search_results = reddit.subreddit(subreddit_str).search(
-            query, sort="relevance", time_filter="all", limit=max_results * 2
-        )
-        for submission in search_results:
-            # Filtering
-            if submission.created_utc < start_ts or submission.created_utc > end_ts:
-                continue
-
-            if submission.num_comments < min_comments:
-                continue
-
-            post_text = submission.selftext or submission.title
-            if count_words(post_text) < min_words:
-                continue
-
-            # Additional check: medication name should be in text
-            full_text = (submission.title + " " + submission.selftext).lower()
-            if medication_name.lower() not in full_text:
-                continue
-
-            threads.append(
-                {
-                    "thread_id": submission.id,
-                    "title": submission.title,
-                    "subreddit": submission.subreddit.display_name,
-                    "author": anonymize_username(submission.author.name)
-                    if submission.author
-                    else "[deleted]",
-                    "created_utc": submission.created_utc,
-                    "created_date": datetime.fromtimestamp(submission.created_utc).isoformat(),
-                    "score": submission.score,
-                    "num_comments": submission.num_comments,
-                    "url": f"https://reddit.com{submission.permalink}",
-                    "word_count": count_words(post_text),
-                }
+        try:
+            # Search across specified subreddits
+            # Fetch more than max_results to allow for filtering
+            search_results = reddit.subreddit(combined_subreddit_query).search(
+                query, sort="relevance", time_filter="all", limit=effective_limit
             )
+            for submission in search_results:
+                # Filtering
+                if submission.created_utc < start_ts or submission.created_utc > end_ts:
+                    continue
 
-            if len(threads) >= max_results:
-                break
+                if submission.num_comments < min_comments:
+                    continue
 
-        return {"success": True, "count": len(threads), "threads": threads}
+                post_text = submission.selftext or submission.title
+                if count_words(post_text) < min_words:
+                    continue
+
+                # Additional check: medication name should be in text
+                full_text = (submission.title + " " + submission.selftext).lower()
+                if medication_name.lower() not in full_text:
+                    continue
+
+                author_name = submission.author.name if submission.author else "[deleted]"
+
+                threads.append(
+                    {
+                        "thread_id": submission.id,
+                        "title": submission.title,
+                        "subreddit": submission.subreddit.display_name,
+                        "author": anonymize_username(author_name),
+                        "created_utc": submission.created_utc,
+                        "created_date": datetime.fromtimestamp(submission.created_utc).isoformat(),
+                        "score": submission.score,
+                        "num_comments": submission.num_comments,
+                        "url": f"https://reddit.com{submission.permalink}",
+                        "word_count": count_words(post_text),
+                    }
+                )
+
+                if len(threads) >= max_results:
+                    break
+
+            return {"success": True, "count": len(threads), "threads": threads}
+        except Exception as e:
+            return {"success": False, "error": f"Search failed: {e}"}
 
     @mcp.tool()
     def get_thread_details(thread_id: str, max_comments: int = 50, sort_by: str = "top") -> dict:
@@ -95,46 +113,51 @@ def register_research_tools(mcp, reddit: praw.Reddit):
             thread_id: The ID of the thread (e.g., 'abc123').
             max_comments: Maximum number of comments to retrieve.
             sort_by: Comment sort order ('top', 'new', 'controversial').
+
+        Returns:
+            dict: 'thread' details with 'comments' list, or 'error'.
         """
-        submission = reddit.submission(id=thread_id)
+        try:
+            submission = reddit.submission(id=thread_id)
 
-        # Set comment sort
-        submission.comment_sort = sort_by
+            # Set comment sort
+            submission.comment_sort = sort_by
 
-        # Load comments
-        submission.comments.replace_more(limit=0)  # Only top-level or easy to reach comments
+            # Load comments
+            submission.comments.replace_more(limit=0)  # Only top-level or easy to reach comments
 
-        comments = []
-        for comment in submission.comments.list()[:max_comments]:
-            comments.append(
-                {
-                    "comment_id": comment.id,
-                    "author": anonymize_username(comment.author.name)
-                    if comment.author
-                    else "[deleted]",
-                    "body": comment.body,
-                    "score": comment.score,
-                    "created_utc": comment.created_utc,
-                    "created_date": datetime.fromtimestamp(comment.created_utc).isoformat(),
-                }
-            )
+            comments = []
+            for comment in submission.comments.list()[:max_comments]:
+                author_name = comment.author.name if comment.author else "[deleted]"
+                comments.append(
+                    {
+                        "comment_id": comment.id,
+                        "author": anonymize_username(author_name),
+                        "body": comment.body,
+                        "score": comment.score,
+                        "created_utc": comment.created_utc,
+                        "created_date": datetime.fromtimestamp(comment.created_utc).isoformat(),
+                    }
+                )
 
-        return {
-            "success": True,
-            "thread": {
-                "thread_id": submission.id,
-                "title": submission.title,
-                "subreddit": submission.subreddit.display_name,
-                "author": anonymize_username(submission.author.name)
-                if submission.author
-                else "[deleted]",
-                "selftext": submission.selftext,
-                "score": submission.score,
-                "created_utc": submission.created_utc,
-                "url": f"https://reddit.com{submission.permalink}",
-                "comments": comments,
-            },
-        }
+            author_name = submission.author.name if submission.author else "[deleted]"
+
+            return {
+                "success": True,
+                "thread": {
+                    "thread_id": submission.id,
+                    "title": submission.title,
+                    "subreddit": submission.subreddit.display_name,
+                    "author": anonymize_username(author_name),
+                    "selftext": submission.selftext,
+                    "score": submission.score,
+                    "created_utc": submission.created_utc,
+                    "url": f"https://reddit.com{submission.permalink}",
+                    "comments": comments,
+                },
+            }
+        except Exception as e:
+            return {"success": False, "error": f"Failed to retrieve thread: {e}"}
 
     @mcp.tool()
     def get_subreddit_info(subreddit_name: str) -> dict:
@@ -143,13 +166,19 @@ def register_research_tools(mcp, reddit: praw.Reddit):
 
         Args:
             subreddit_name: Name of the subreddit (without r/).
+
+        Returns:
+            dict: Subreddit metadata or 'error'.
         """
-        subreddit = reddit.subreddit(subreddit_name)
-        return {
-            "name": subreddit.display_name,
-            "title": subreddit.title,
-            "description": subreddit.public_description,
-            "subscribers": subreddit.subscribers,
-            "created_utc": subreddit.created_utc,
-            "rules": [rule.short_name for rule in subreddit.rules],
-        }
+        try:
+            subreddit = reddit.subreddit(subreddit_name)
+            return {
+                "name": subreddit.display_name,
+                "title": subreddit.title,
+                "description": subreddit.public_description,
+                "subscribers": subreddit.subscribers,
+                "created_utc": subreddit.created_utc,
+                "rules": [rule.short_name for rule in subreddit.rules],
+            }
+        except Exception as e:
+            return {"success": False, "error": f"Failed to get subreddit info: {e}"}
